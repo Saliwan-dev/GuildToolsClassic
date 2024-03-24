@@ -4,3 +4,4 @@
 
 == Technique
     Typer les datas par serveur
+    supprimer le dossier addon

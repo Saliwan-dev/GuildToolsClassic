@@ -67,7 +67,7 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 return
             end
 
-            print("[GT]".."["..prefix.."]"..message)
+            --print("[GT]".."["..prefix.."]"..message)
 
             local splitedMessage = StringSplit(message, ":")
             local messageType = unpack(splitedMessage)
@@ -112,7 +112,6 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 C_ChatInfo.RegisterAddonMessagePrefix(synchronizer.prefix)
             end
 
-            print("Envoi d'un message au prefix "..synchronizer.prefix)
             ChatThrottleLib:SendAddonMessage("BULK", synchronizer.prefix, "CHECK_SYNC", "GUILD")
         end
     end)

@@ -1,0 +1,46 @@
+tasks.register("copySources", Copy) {
+    from project.rootDir
+    into 'out/sources'
+    exclude ('.idea')
+    exclude ('.idea/*')
+    exclude ('.gradle')
+    exclude ('.gradle/*')
+    exclude ('gradle')
+    exclude ('gradle/*')
+    exclude ('build.gradle')
+    exclude ('gradle.properties')
+    exclude ('gradlew')
+    exclude ('gradlew.bat')
+}
+
+tasks.register("srcZip", Zip) {
+    dependsOn 'copySources'
+
+    doFirst {
+        //Set de la version dans le fichier .toc
+        File tocFile = new File('out/sources/GuildTools.toc')
+        String tocContent = tocFile.getText('UTF-8')
+        tocContent = tocContent.replace("{{version}}", ""+project.version)
+        tocFile.write(tocContent)
+    }
+
+    doLast {
+        delete 'out/sources'
+    }
+
+    archiveFileName = "GuildTools_" + project.version + ".zip"
+    destinationDirectory = new File("/out")
+    into('GuildTools') {
+        from '/out/sources'
+        exclude ('.idea')
+        exclude ('.idea/*')
+        exclude ('.gradle')
+        exclude ('.gradle/*')
+        exclude ('gradle')
+        exclude ('gradle/*')
+        exclude ('build.gradle')
+        exclude ('gradle.properties')
+        exclude ('gradlew')
+        exclude ('gradlew.bat')
+    }
+}
