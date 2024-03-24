@@ -1,0 +1,33 @@
+## Interface: 11501
+## Title: Guild Tools
+## Author: Saliwan
+## Version: 0.0.2
+## OptionalDeps: Prat-3.0
+## SavedVariables: GT_SavedData
+
+## Libs
+libs/md5/md5.lua
+libs/ChatThrottleLib/ChatThrottleLib.lua
+
+## Framework
+framework/GT_EventManager.lua
+framework/GT_UIFactory.lua
+framework/GT_Utils.lua
+framework/GT_SynchronizerFactory.lua
+
+## Dao
+GT_Data.lua
+
+## Services
+hardcore/GT_HardcoreService.lua
+hardcore/GT_HardcoreSynchronizer.lua
+reroll/GT_RerollService.lua
+reroll/GT_RerollSynchronizer.lua
+
+## View
+reroll/GT_AddRerollPopup.lua
+GT_Tab.lua
+GT_MemberDetailFrame.lua
+
+GT_ChatFrameOverride.lua
+GT_Prat.lua

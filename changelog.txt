@@ -1,0 +1,16 @@
+= 0.0.2
+    - Fonctionalités
+        Ajout de la sélection du mode autonome
+
+    - Technique
+        Amélioration du système de synchronisation des données
+        Utilisation de ChatThrottleLib pour l'envoi de messages
+
+= 0.0.1
+Premier push
+    - Fonctionalités
+        Module de gestion de reroll + affichage du nom du main dans le chat
+        Compatibilité avec l'addon Prat3
+
+    - Technique
+        Mise en place de la base de l'addon

@@ -1,0 +1,6 @@
+== Fonctionalités
+    Déplacer la fenêtre de l'addon dans une fenetre à part (Bug empechant les promotions avec l'addon :/)
+    Prévoir l'internationalisation des labels avant que ce soit trop relou
+
+== Technique
+    Typer les datas par serveur
