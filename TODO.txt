@@ -1,7 +1,11 @@
 == Fonctionalités
     Déplacer la fenêtre de l'addon dans une fenetre à part (Bug empechant les promotions avec l'addon :/)
     Prévoir l'internationalisation des labels avant que ce soit trop relou
+    Indicateur de mort pour le mode HC
+    Option pour activer le mode debug
 
 == Technique
     Typer les datas par serveur
     supprimer le dossier addon
+    Gestion du cas A reroll de B et B reroll de C
+    
