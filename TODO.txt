@@ -3,6 +3,7 @@
     Prévoir l'internationalisation des labels avant que ce soit trop relou
     Indicateur de mort pour le mode HC
     Option pour activer le mode debug
+    Banque de guilde
 
 == Technique
     Typer les datas par serveur
