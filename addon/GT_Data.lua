@@ -18,11 +18,21 @@ eventHandler:SetScript("OnEvent", function(self, event, arg1)
         end
 
 		if GT_SavedData[realmName].rerollHistory == nil then
-			GT_SavedData[realmName].rerollHistory = {}
+            if GT_SavedData.rerollHistory ~= nil then --Recuperation des datas de la 0.0.2
+                GT_SavedData[realmName].rerollHistory = GT_SavedData.rerollHistory
+                GT_SavedData.rerollHistory = nil
+            else
+			    GT_SavedData[realmName].rerollHistory = {}
+			end
 		end
 
         if GT_SavedData[realmName].selffoundHistory == nil then
-            GT_SavedData[realmName].selffoundHistory = {}
+            if GT_SavedData.selffoundHistory ~= nil then --Recuperation des datas de la 0.0.2
+                GT_SavedData[realmName].selffoundHistory = GT_SavedData.selffoundHistory
+                GT_SavedData.selffoundHistory = nil
+            else
+                GT_SavedData[realmName].selffoundHistory = {}
+            end
         end
 
         GT_Data.rerollHistory = GT_SavedData[realmName].rerollHistory
