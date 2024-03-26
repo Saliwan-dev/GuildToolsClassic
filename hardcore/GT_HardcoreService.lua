@@ -34,31 +34,36 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
         local isLogin, isReload = ...
         if isLogin then
-            --Set Selffound data auto
-            local playerName = UnitName("player")
-            local hasSelffoundBuff = false
+            C_Timer.After(1, function() --On laisse aux buff le temps de se charger
+                --Set Selffound data auto
+                local playerName = UnitName("player")
+                local hasSelffoundBuff = false
 
-            local buffIndex = 1
-            while true do
-                local spellId = select(10, UnitBuff("player", buffIndex))
+                local buffIndex = 1
+                while true do
+                    local spellId = select(10, UnitBuff("player", buffIndex))
 
-                if spellId == nil or buffIndex > 100 then
-                    break
+                    if spellId == nil or buffIndex > 100 then
+                        break
+                    end
+
+                    if spellId == 431567 then
+                        hasSelffoundBuff = true
+                        break
+                    end
+
+                    buffIndex = buffIndex + 1
                 end
 
-                if spellId == 431567 then
-                    hasSelffoundBuff = true
-                    break
+                local isSelffoundInAddonData = GT_HardcoreService:IsSelffound(playerName)
+
+                print(tostring(hasSelffoundBuff))
+                print(tostring(isSelffoundInAddonData))
+
+                if hasSelffoundBuff ~= isSelffoundInAddonData then
+                    GT_HardcoreService:SetSelffound(playerName, hasSelffoundBuff)
                 end
-
-                buffIndex = buffIndex + 1
-            end
-
-            local isSelffoundInAddonData = GT_HardcoreService:IsSelffound(playerName)
-
-            if hasSelffoundBuff ~= isSelffoundInAddonData then
-                GT_HardcoreService:SetSelffound(playerName, hasSelffoundBuff)
-            end
+            end)
         end
     end
 end)
