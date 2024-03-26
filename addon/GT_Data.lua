@@ -1,6 +1,8 @@
 GT_Data = {}
 GT_Data.guildMembers = {}
 
+local realmName = GetRealmName()
+
 local eventHandler = CreateFrame("Frame")
 eventHandler:RegisterEvent("ADDON_LOADED")
 eventHandler:RegisterEvent("GUILD_ROSTER_UPDATE")
@@ -11,13 +13,20 @@ eventHandler:SetScript("OnEvent", function(self, event, arg1)
 			GT_SavedData = {}
 		end
 
-		if GT_SavedData.rerollHistory == nil then
-			GT_SavedData.rerollHistory = {}
+		if GT_SavedData[realmName] == nil then
+            GT_SavedData[realmName] = {}
+        end
+
+		if GT_SavedData[realmName].rerollHistory == nil then
+			GT_SavedData[realmName].rerollHistory = {}
 		end
 
-        if GT_SavedData.selffoundHistory == nil then
-            GT_SavedData.selffoundHistory = {}
+        if GT_SavedData[realmName].selffoundHistory == nil then
+            GT_SavedData[realmName].selffoundHistory = {}
         end
+
+        GT_Data.rerollHistory = GT_SavedData[realmName].rerollHistory
+        GT_Data.selffoundHistory = GT_SavedData[realmName].selffoundHistory
     end
 
     if event == "GUILD_ROSTER_UPDATE" then

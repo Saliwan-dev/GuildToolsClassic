@@ -25,8 +25,8 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
         end
 
         local hashAsInt = 0
-        for char = 0, string.len(stringToHash) do
-            hashAsInt = hashAsInt + string.byte(stringToHash)
+        for char = 1, string.len(stringToHash) do
+            hashAsInt = hashAsInt + string.byte(stringToHash, char)
         end
 
         self.hash = tostring(hashAsInt)

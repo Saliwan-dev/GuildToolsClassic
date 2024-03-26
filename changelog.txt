@@ -1,16 +1,23 @@
-= 0.0.2
-    - Fonctionalités
-        Ajout de la sélection du mode autonome
+= 0.0.3
+    - Features
+        Auto detect self mode in HC at character connection
 
-    - Technique
-        Amélioration du système de synchronisation des données
-        Utilisation de ChatThrottleLib pour l'envoi de messages
+    - Technical
+        Multi realm management : Data are now split by realm (It cause a data reset ...)
+
+= 0.0.2
+    - Features
+        Self mode tag management
+
+    - Technical
+        Synchronization data system improved
+        Use of ChatThrottleLib to send addon messages
 
 = 0.0.1
-Premier push
-    - Fonctionalités
-        Module de gestion de reroll + affichage du nom du main dans le chat
-        Compatibilité avec l'addon Prat3
+    - Features
+        Reroll group management
+        Show main char name in chat when reroll send a message
+        Prat3 (Chat addon) compatibility
 
-    - Technique
-        Mise en place de la base de l'addon
+    - Technical
+        addon technical basis

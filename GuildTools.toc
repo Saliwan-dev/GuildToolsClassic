@@ -23,6 +23,7 @@ hardcore/GT_HardcoreService.lua
 hardcore/GT_HardcoreSynchronizer.lua
 reroll/GT_RerollService.lua
 reroll/GT_RerollSynchronizer.lua
+options/GT_OptionsService.lua
 
 ## View
 reroll/GT_AddRerollPopup.lua
