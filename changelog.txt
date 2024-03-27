@@ -1,9 +1,11 @@
 = 0.0.3
     - Features
         Auto detect self mode in HC at character connection
+        New option panel for GuildTools in Blizzard option interface
+        Add locale management (frFR and enUS for now)
 
     - Technical
-        Multi realm management : Data are now split by realm (It cause a data reset ...)
+        Multi realm management : Data are now split by realm
 
 = 0.0.2
     - Features

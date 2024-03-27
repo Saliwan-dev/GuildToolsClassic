@@ -32,15 +32,5 @@ tasks.register("srcZip", Zip) {
     destinationDirectory = new File("/out")
     into('GuildTools') {
         from '/out/sources'
-        exclude ('.idea')
-        exclude ('.idea/*')
-        exclude ('.gradle')
-        exclude ('.gradle/*')
-        exclude ('gradle')
-        exclude ('gradle/*')
-        exclude ('build.gradle')
-        exclude ('gradle.properties')
-        exclude ('gradlew')
-        exclude ('gradlew.bat')
     }
 }

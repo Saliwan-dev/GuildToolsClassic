@@ -13,6 +13,10 @@ eventHandler:SetScript("OnEvent", function(self, event, arg1)
 			GT_SavedData = {}
 		end
 
+		if GT_SavedData.options == nil then
+		    GT_SavedData.options = {}
+		end
+
 		if GT_SavedData[realmName] == nil then
             GT_SavedData[realmName] = {}
         end

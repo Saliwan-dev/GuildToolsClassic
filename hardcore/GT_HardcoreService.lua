@@ -57,9 +57,6 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
 
                 local isSelffoundInAddonData = GT_HardcoreService:IsSelffound(playerName)
 
-                print(tostring(hasSelffoundBuff))
-                print(tostring(isSelffoundInAddonData))
-
                 if hasSelffoundBuff ~= isSelffoundInAddonData then
                     GT_HardcoreService:SetSelffound(playerName, hasSelffoundBuff)
                 end

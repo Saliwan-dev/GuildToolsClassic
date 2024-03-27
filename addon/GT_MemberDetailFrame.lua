@@ -55,7 +55,8 @@ GT_MemberDetailFrame.rerollFrame.name:SetFont("Fonts\\FRIZQT__.TTF", 16, "OUTLIN
 GT_MemberDetailFrame.rerollFrame.name:SetPoint("TOP", 0, -15)
 GT_MemberDetailFrame.rerollFrame.name:SetTextColor(1,1,1)
 
-GT_MemberDetailFrame.rerollFrame.SFCheckbox = GT_UIFactory:CreateCheckbutton(GT_MemberDetailFrame.rerollFrame, 10, -35, "Autonome")
+GT_MemberDetailFrame.rerollFrame.SFCheckbox = GT_UIFactory:CreateCheckbutton(GT_MemberDetailFrame.rerollFrame, 10, -35, "")
+GT_LocaleManager:BindText(getglobal(GT_MemberDetailFrame.rerollFrame.SFCheckbox:GetName() .. 'Text'), "memberdetailframe.rerollframe.sfcheckbox")
 GT_MemberDetailFrame.rerollFrame.SFCheckbox:SetScript("OnClick",
    function()
       GT_HardcoreService:SetSelffound(selectedReroll, GT_MemberDetailFrame.rerollFrame.SFCheckbox:GetChecked())

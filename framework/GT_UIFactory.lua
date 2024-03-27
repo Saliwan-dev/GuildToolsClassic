@@ -12,3 +12,13 @@ function GT_UIFactory:CreateCheckbutton(parent, x_loc, y_loc, displayname)
 
 	return checkbutton;
 end
+
+function GT_UIFactory:CreateLabel(parent,  x_loc, y_loc, text, fontSize, r, g, b)
+    local label = parent:CreateFontString()
+    label:SetFont("Fonts\\FRIZQT__.TTF", fontSize, "OUTLINE")
+    label:SetPoint("TOPLEFT", x_loc, y_loc)
+    label:SetTextColor(r,g,b)
+    label:SetText(text)
+
+    return label
+end
