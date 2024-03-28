@@ -1,6 +1,6 @@
 local backdropInfo =
 {
-    bgFile="Interface\\DialogFrame\\UI-DialogBox-Background",
+    bgFile="Interface\\FrameGeneral\\UI-Background-Marble",
     edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border",
  	tile = true,
  	tileEdge = true,
@@ -13,8 +13,9 @@ GT_AddRerollPopup = CreateFrame("Frame","GT_AddRerollPopup",UIParent,"BackdropTe
 GT_AddRerollPopup:SetWidth(320)
 GT_AddRerollPopup:SetHeight(200)
 GT_AddRerollPopup:SetBackdrop(backdropInfo)
-GT_AddRerollPopup:SetBackdropColor(0.1, 0.1, 0.1)
 GT_AddRerollPopup:SetPoint("CENTER", 0, 150)
+GT_AddRerollPopup:SetFrameLevel(99)
+GT_AddRerollPopup:EnableMouse(true)
 
 GT_AddRerollPopup.mainName = ""
 

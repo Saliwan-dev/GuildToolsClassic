@@ -1,3 +1,12 @@
+= 0.0.4
+    - Features
+        New UI : GuildTools is now in a standalone frame
+        New button on minimap
+        New button in Blizzard guild panel to open GuildTools frame
+
+    - Technical
+        /
+
 = 0.0.3
     - Features
         Auto detect self mode in HC at character connection

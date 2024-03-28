@@ -8,6 +8,9 @@
 ## Libs
 libs/md5/md5.lua
 libs/ChatThrottleLib/ChatThrottleLib.lua
+libs/LibDataBroker/LibDataBroker-1.1.lua
+libs/LibDBIcon/LibDBIcon-1.0.lua
+libs/LibStub/LibStub.lua
 
 ## Framework
 framework/GT_EventManager.lua
@@ -24,17 +27,19 @@ resources/locales/frFR.lua
 addon/GT_Data.lua
 
 ## Services
-options/GT_OptionsService.lua
-hardcore/GT_HardcoreService.lua
-hardcore/GT_HardcoreSynchronizer.lua
-reroll/GT_RerollService.lua
-reroll/GT_RerollSynchronizer.lua
+addon/options/GT_OptionsService.lua
+addon/features/hardcore/GT_HardcoreService.lua
+addon/features/hardcore/GT_HardcoreSynchronizer.lua
+addon/features/reroll/GT_RerollService.lua
+addon/features/reroll/GT_RerollSynchronizer.lua
 
 ## View
-options/GT_OptionsPanel.lua
-reroll/GT_AddRerollPopup.lua
-addon/GT_Tab.lua
+addon/features/reroll/GT_AddRerollPopup.lua
+addon/options/GT_OptionsPanel.lua
+addon/GT_MainFrame.lua
+addon/GT_MinimapButton.lua
+addon/GT_MemberListFrame.lua
 addon/GT_MemberDetailFrame.lua
 
-addon/GT_ChatFrameOverride.lua
-addon/GT_Prat.lua
+addon/ext/GT_ChatFrameOverride.lua
+addon/ext/GT_Prat.lua

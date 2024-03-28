@@ -22,6 +22,12 @@ tasks.register("srcZip", Zip) {
         String tocContent = tocFile.getText('UTF-8')
         tocContent = tocContent.replace("{{version}}", ""+project.version)
         tocFile.write(tocContent)
+
+        //Set de la version dans le fichier du bouton de la minimap
+        File minimapFile = new File('out/sources/addon/GT_MinimapButton.lua')
+        String minimapContent = minimapFile.getText('UTF-8')
+        minimapContent = minimapContent.replace("{{version}}", ""+project.version)
+        minimapFile.write(minimapContent)
     }
 
     doLast {

@@ -17,6 +17,14 @@ eventHandler:SetScript("OnEvent", function(self, event, arg1)
 		    GT_SavedData.options = {}
 		end
 
+		if GT_SavedData.options.minimapButton == nil then
+            GT_SavedData.options.minimapButton = {}
+        end
+
+        if GT_SavedData.options.minimapButton.minimapPos == nil then
+            GT_SavedData.options.minimapButton.minimapPos = 200
+        end
+
 		if GT_SavedData[realmName] == nil then
             GT_SavedData[realmName] = {}
         end

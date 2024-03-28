@@ -3,7 +3,7 @@ local selectedReroll = nil
 
 local backdropInfo =
 {
-    bgFile="Interface\\DialogFrame\\UI-DialogBox-Background",
+    bgFile=nil,
     edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border",
  	tile = true,
  	tileEdge = true,
@@ -14,13 +14,13 @@ local backdropInfo =
 
 -- PARENT FRAME
 
-local PARENT_FRAME_WIDTH = 250
-local PARENT_FRAME_HEIGHT = 420
+local PARENT_FRAME_WIDTH = GT_MainFrame:GetWidth() - GT_MemberListFrame:GetWidth()
+local PARENT_FRAME_HEIGHT = GT_MainFrame:GetHeight() - GT_MainFrame_Title:GetHeight()
 
 GT_MemberDetailFrame = CreateFrame("Frame",nil,GT_MemberListFrame)
 GT_MemberDetailFrame:SetWidth(PARENT_FRAME_WIDTH)
 GT_MemberDetailFrame:SetHeight(PARENT_FRAME_HEIGHT)
-GT_MemberDetailFrame:SetPoint("TOPLEFT", 330, 60)
+GT_MemberDetailFrame:SetPoint("TOPRIGHT", PARENT_FRAME_WIDTH - 4, 1)
 GT_MemberDetailFrame:Hide()
 
 -- REROLL FRAME
@@ -33,16 +33,6 @@ GT_MemberDetailFrame.rerollFrame:SetHeight(REROLL_FRAME_HEIGHT)
 GT_MemberDetailFrame.rerollFrame:SetBackdrop(backdropInfo)
 GT_MemberDetailFrame.rerollFrame:SetBackdropColor(0.1, 0.1, 0.1)
 GT_MemberDetailFrame.rerollFrame:SetPoint("TOPLEFT")
-
-GT_MemberDetailFrame.rerollFrame.closeButton = CreateFrame("Button", nil, GT_MemberDetailFrame.rerollFrame)
-GT_MemberDetailFrame.rerollFrame.closeButton:SetSize(35, 35)
-GT_MemberDetailFrame.rerollFrame.closeButton:SetPoint("TOPRIGHT", 4, 4)
-GT_MemberDetailFrame.rerollFrame.closeButton:SetNormalTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up")
-GT_MemberDetailFrame.rerollFrame.closeButton:SetPushedTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Down")
-GT_MemberDetailFrame.rerollFrame.closeButton:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight")
-GT_MemberDetailFrame.rerollFrame.closeButton:SetScript('OnClick', function()
-	GT_MemberDetailFrame:Hide()
-end)
 
 GT_MemberDetailFrame.rerollFrame.selectedLabel = GT_MemberDetailFrame.rerollFrame:CreateFontString()
 GT_MemberDetailFrame.rerollFrame.selectedLabel:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE")
@@ -67,7 +57,7 @@ GT_MemberDetailFrame.rerollFrame.SFCheckbox:SetScript("OnClick",
 
 GT_MemberDetailFrame.mainFrame = CreateFrame("Frame",nil,GT_MemberDetailFrame,"BackdropTemplate")
 GT_MemberDetailFrame.mainFrame:SetWidth(PARENT_FRAME_WIDTH)
-GT_MemberDetailFrame.mainFrame:SetHeight(PARENT_FRAME_HEIGHT - REROLL_FRAME_HEIGHT)
+GT_MemberDetailFrame.mainFrame:SetHeight(GT_MemberDetailFrame:GetHeight() - GT_MemberDetailFrame.rerollFrame:GetHeight() + 10)
 GT_MemberDetailFrame.mainFrame:SetBackdrop(backdropInfo)
 GT_MemberDetailFrame.mainFrame:SetBackdropColor(0.1, 0.1, 0.1)
 GT_MemberDetailFrame.mainFrame:SetPoint("TOPLEFT", 0, - REROLL_FRAME_HEIGHT + 5)

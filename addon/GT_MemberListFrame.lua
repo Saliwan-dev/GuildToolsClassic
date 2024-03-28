@@ -1,29 +1,18 @@
-local TabName="GT"
-local TabID=FriendsFrame.numTabs+2
-local Tab=CreateFrame("Button","$parentTab"..TabID, FriendsFrame, "FriendsFrameTabTemplate")
-PanelTemplates_SetNumTabs(FriendsFrame, TabID)
-Tab:SetPoint("LEFT","$parentTab"..(TabID-1),"RIGHT",-14,0);
-Tab:SetText(TabName);
-Tab:SetID(TabID)
+local backdropInfo =
+{
+    bgFile="Interface\\FrameGeneral\\UI-Background-Marble",
+    edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border",
+ 	tile = true,
+ 	tileEdge = true,
+ 	tileSize = 256,
+ 	edgeSize = 4,
+ 	insets = { left = 1, right = 1, top = 1, bottom = 1 },
+}
 
-local Panel=CreateFrame("Frame", "A_Test_Panel", FriendsFrame);
-tinsert(FRIENDSFRAME_SUBFRAMES, "A_Test_Panel")
-Panel:SetAllPoints(FriendsFrame);
-Panel:Hide()
-
-hooksecurefunc("FriendsFrame_Update",function(self, button)
-    local selectedTab = PanelTemplates_GetSelectedTab(FriendsFrame)
-
-	if selectedTab == TabID	then
-		FriendsFrameInset:SetPoint("TOPLEFT", 4, -60)
-        FriendsFrame_ShowSubFrame("A_Test_Panel")
-    end
-end);
-
-
-GT_MemberListFrame = CreateFrame("Frame", nil, Panel)
-GT_MemberListFrame:SetSize(325, 340)
-GT_MemberListFrame:SetPoint("TOPLEFT", 4, -60)
+GT_MemberListFrame = CreateFrame("Frame", nil, GT_MainFrame, "BackdropTemplate")
+GT_MemberListFrame:SetPoint("TOPLEFT", 5, -25)
+GT_MemberListFrame:SetSize(170, GT_MainFrame:GetHeight() - 10 - 20)
+GT_MemberListFrame:SetBackdrop(backdropInfo)
 
 local scrollFrame = CreateFrame("ScrollFrame", nil, GT_MemberListFrame, "UIPanelScrollFrameTemplate")
 scrollFrame:SetPoint("TOPLEFT", 3, -4)
@@ -57,7 +46,7 @@ local function initGuildMemberEntryFrame(index, name, isOnline, isSelffound)
 
         GT_MemberListFrame.guildMemberFrames[index].tag:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-            GameTooltip:SetText("Autonome")
+            GameTooltip:SetText(GT_LocaleManager:GetLabel("memberdetailframe.rerollframe.sfcheckbox"))
         end)
 
         GT_MemberListFrame.guildMemberFrames[index].tag:SetScript("OnLeave", function(self)

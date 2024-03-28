@@ -1,12 +1,20 @@
 == Fonctionalités
-    Prévoir l'internationalisation des labels avant que ce soit trop relou (GetLocale())
-    Déplacer la fenêtre de l'addon dans une fenetre à part (Bug empechant les promotions avec l'addon :/)
     Indicateur de mort pour le mode HC
     Option pour activer le mode debug
     Banque de guilde
+    Paramètres par perso (position icone minimap)
+    Paramètres :
+        Cacher icone minimap
+        Raccourci pour ouvrir le menu
+        Cacher icone panel guilde
+    Tri de la liste des membres de guilde
+    Barre de recherche de la liste des membre de guilde
+    Ajout d'un main depuis un reroll
+    Calendrier
+    Onglet administration accessible seulement pour les officiers
 
 == Technique
     Ajout d'une option de debug
     supprimer le dossier addon
     Gestion du cas A reroll de B et B reroll de C
-    
+    Nettoyage des interfaces
