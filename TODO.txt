@@ -1,4 +1,5 @@
 == Fonctionalités
+    Traduction "Ajout d'un reroll à ..."
     Indicateur de mort pour le mode HC
     Option pour activer le mode debug
     Banque de guilde
@@ -12,9 +13,8 @@
     Ajout d'un main depuis un reroll
     Calendrier
     Onglet administration accessible seulement pour les officiers
+    Deathlog
 
 == Technique
     Ajout d'une option de debug
-    supprimer le dossier addon
     Gestion du cas A reroll de B et B reroll de C
-    Nettoyage des interfaces
