@@ -46,6 +46,22 @@ closeButton:SetScript('OnClick', function()
 	GT_MainFrame:Hide()
 end)
 
+GT_GuildMembersTabContent = CreateFrame("Frame", "GT_GuildMembersTabContent", GT_MainFrame)
+GT_GuildMembersTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
+GT_GuildMembersTabContent:SetPoint("TOPLEFT", 5, -27)
+GT_GuildMembersTabContent:Hide()
+
+GT_UIFactory:AddTab(GT_MainFrame, "Membres", GT_GuildMembersTabContent)
+
+GT_BankTabContent = CreateFrame("Frame", "GT_BankTabContent", GT_MainFrame)
+GT_BankTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
+GT_BankTabContent:SetPoint("TOPLEFT", 5, -27)
+GT_BankTabContent:Hide()
+
+GT_UIFactory:AddTab(GT_MainFrame, "Banque", GT_BankTabContent)
+
+-- BOUTON SUR LE PANEL DE GUILDE...  A DEPLACER DANS UN AUTRE FICHIER
+
 local guildPanelButtonBackdrop =
 {
     bgFile=nil,
@@ -60,7 +76,6 @@ local guildPanelButtonBackdrop =
 local GuildPanelButton = CreateFrame("Button", nil, GuildFrame, "BackdropTemplate")
 GuildPanelButton:SetSize(40, 40)
 GuildPanelButton:SetPoint("TOPRIGHT", 41, -350)
---GuildPanelButton:SetPoint("TOPLEFT", 60, -20)
 GuildPanelButton:SetNormalTexture("Interface\\AddOns\\GuildTools\\resources\\GuildTools_Logo_Background.png")
 GuildPanelButton:SetPushedTexture("Interface\\AddOns\\GuildTools\\resources\\GuildTools_Logo_Background.png")
 GuildPanelButton:SetHighlightTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight")
@@ -75,4 +90,5 @@ borderFrame:SetSize(48, 48)
 borderFrame:SetBackdrop(guildPanelButtonBackdrop)
 borderFrame:SetFrameLevel(99)
 
+-- Permet de fermer la fenêtre avec Echap
 table.insert(UISpecialFrames, "GT_MainFrame")

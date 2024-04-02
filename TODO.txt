@@ -13,6 +13,7 @@
     Calendrier
     Onglet administration accessible seulement pour les officiers
     Deathlog
+    Laisser le personnage sélectionné en surbrillance dans les listes de perso
 
 == Technique
     Separer les datas par guilde
