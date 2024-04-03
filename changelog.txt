@@ -1,3 +1,11 @@
+= 0.0.5
+    - Features
+        /
+
+    -Technical
+        Fix bug in data synchronizer
+        Update Interface version to 11502
+
 = 0.0.4
     - Features
         New UI : GuildTools is now in a standalone frame
