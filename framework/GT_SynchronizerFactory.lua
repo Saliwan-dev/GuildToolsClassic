@@ -98,8 +98,8 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                     synchronizer.syncNeeded = true
                     C_Timer.After(5, function()
                         table.sort(synchronizer.playerNameByHash[myHash])
-                        if playerNameByHash[myHash][1] == UnitName("player") then
-                            SendAllData()
+                        if synchronizer.playerNameByHash[myHash][1] == UnitName("player") then
+                            synchronizer:SendAllData()
                         end
                     end)
                 end

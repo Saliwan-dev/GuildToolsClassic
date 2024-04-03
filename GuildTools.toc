@@ -1,4 +1,4 @@
-## Interface: 11501
+## Interface: 11502
 ## Title: Guild Tools
 ## Author: Saliwan
 ## Version: {{version}}
