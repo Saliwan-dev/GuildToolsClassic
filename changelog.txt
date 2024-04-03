@@ -1,42 +1,36 @@
-= 0.0.5
-    - Features
-        /
+### = 0.0.5
+**Technical**
+- Fix bug in data synchronizer
+- Update Interface version to 11502
 
-    -Technical
-        Fix bug in data synchronizer
-        Update Interface version to 11502
+### = 0.0.4
+**Features**
+- New UI : GuildTools is now in a standalone frame
+- New button on minimap
+- New button in Blizzard guild panel to open GuildTools frame
 
-= 0.0.4
-    - Features
-        New UI : GuildTools is now in a standalone frame
-        New button on minimap
-        New button in Blizzard guild panel to open GuildTools frame
+### = 0.0.3
+**Features**
+- Auto detect self mode in HC at character connection
+- New option panel for GuildTools in Blizzard option interface
+- Add locale management (frFR and enUS for now)
 
-    - Technical
-        /
+**Technical**
+- Multi realm management : Data are now split by realm
 
-= 0.0.3
-    - Features
-        Auto detect self mode in HC at character connection
-        New option panel for GuildTools in Blizzard option interface
-        Add locale management (frFR and enUS for now)
+### = 0.0.2
+**Features**
+- Self mode tag management
 
-    - Technical
-        Multi realm management : Data are now split by realm
+**Technical**
+- Synchronization data system improved
+- Use of ChatThrottleLib to send addon messages
 
-= 0.0.2
-    - Features
-        Self mode tag management
+### = 0.0.1
+**Features**
+- Reroll group management
+- Show main char name in chat when reroll send a message
+- Prat3 (Chat addon) compatibility
 
-    - Technical
-        Synchronization data system improved
-        Use of ChatThrottleLib to send addon messages
-
-= 0.0.1
-    - Features
-        Reroll group management
-        Show main char name in chat when reroll send a message
-        Prat3 (Chat addon) compatibility
-
-    - Technical
-        addon technical basis
+**Technical**
+- addon technical basis
