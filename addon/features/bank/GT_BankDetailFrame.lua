@@ -108,7 +108,6 @@ end
 
 for bagID = 0, 4 do
     local numSlot = C_Container.GetContainerNumSlots(bagID)
-    print(numSlot)
     for slot = 1, numSlot do
         local containerInfo = C_Container.GetContainerItemInfo(bagID, slot)
         if containerInfo ~= nil then

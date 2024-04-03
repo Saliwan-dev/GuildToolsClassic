@@ -51,14 +51,24 @@ GT_GuildMembersTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeigh
 GT_GuildMembersTabContent:SetPoint("TOPLEFT", 5, -27)
 GT_GuildMembersTabContent:Hide()
 
-GT_UIFactory:AddTab(GT_MainFrame, "Membres", GT_GuildMembersTabContent)
+local membersTab = GT_UIFactory:AddTab(GT_MainFrame, "", GT_GuildMembersTabContent)
+GT_LocaleManager:BindText(membersTab, "mainframe.tabs.members")
 
 GT_BankTabContent = CreateFrame("Frame", "GT_BankTabContent", GT_MainFrame)
 GT_BankTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
 GT_BankTabContent:SetPoint("TOPLEFT", 5, -27)
 GT_BankTabContent:Hide()
 
-GT_UIFactory:AddTab(GT_MainFrame, "Banque", GT_BankTabContent)
+local bankTab = GT_UIFactory:AddTab(GT_MainFrame, "", GT_BankTabContent)
+GT_LocaleManager:BindText(bankTab, "mainframe.tabs.bank")
+
+GT_AdminTabContent = CreateFrame("Frame", "GT_AdminTabContent", GT_MainFrame)
+GT_AdminTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
+GT_AdminTabContent:SetPoint("TOPLEFT", 5, -27)
+GT_AdminTabContent:Hide()
+
+local adminTab = GT_UIFactory:AddTab(GT_MainFrame, "", GT_AdminTabContent)
+GT_LocaleManager:BindText(adminTab, "mainframe.tabs.admin")
 
 -- BOUTON SUR LE PANEL DE GUILDE...  A DEPLACER DANS UN AUTRE FICHIER
 
@@ -92,3 +102,13 @@ borderFrame:SetFrameLevel(99)
 
 -- Permet de fermer la fenêtre avec Echap
 table.insert(UISpecialFrames, "GT_MainFrame")
+
+local eventHandler = CreateFrame("Frame")
+eventHandler:RegisterEvent("PLAYER_ENTERING_WORLD")
+eventHandler:SetScript("OnEvent", function(self, event, ...)
+    if event == "PLAYER_ENTERING_WORLD" then
+        C_Timer.After(1, function() --On laisse aux buff le temps de se charger
+            adminTab:SetShown(select(3, GetGuildInfo("player")) < 2)
+        end)
+    end
+end)

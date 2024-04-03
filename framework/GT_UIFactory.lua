@@ -63,4 +63,6 @@ function GT_UIFactory:AddTab(frame, tabName, content)
     tab.content:Hide()
 
     Tab_OnClick(_G[frameName.."Tab1"])
+
+    return tab
 end

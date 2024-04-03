@@ -78,7 +78,7 @@ local function initGuildMemberEntryFrame(index, name, isOnline, isSelffound)
 	GT_MemberListFrame.guildMemberFrames[index]:SetScript('OnClick', function()
 		GT_MemberDetailFrame:SetData(name)
 		GT_MemberDetailFrame:Show()
-		GT_AddRerollPopup:Hide()
+		GT_SelectGuildMemberPopup:Hide()
 	end)
 
     GT_MemberListFrame.guildMemberFrames[index]:SetPoint("TOPLEFT", 0, -15 * (index - 1))

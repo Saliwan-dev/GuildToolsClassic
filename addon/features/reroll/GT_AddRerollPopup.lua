@@ -39,7 +39,7 @@ GT_AddRerollPopup.input:SetSize(290, 1)
 GT_AddRerollPopup.input:SetPoint("TOPLEFT", 15, -40)
 GT_AddRerollPopup.input:SetScript("OnEscapePressed", function() GT_AddRerollPopup:Hide() end)
 GT_AddRerollPopup:SetScript("OnShow", function()
-    GT_AddRerollPopup.title:SetText("Ajout d'un reroll à "..GT_AddRerollPopup.mainName)
+    GT_AddRerollPopup.title:SetText(string.format(GT_LocaleManager:GetLabel("addrerollpopup.title"), GT_AddRerollPopup.mainName))
     GT_AddRerollPopup.input:SetText("")
 end)
 

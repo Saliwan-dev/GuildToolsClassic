@@ -79,24 +79,39 @@ GT_MemberDetailFrame.mainFrame.rerollsLabel:SetPoint("TOPLEFT", 10, -40)
 GT_MemberDetailFrame.mainFrame.rerollsLabel:SetTextColor(1,0.8,0)
 GT_MemberDetailFrame.mainFrame.rerollsLabel:SetText("Rerolls")
 
+local function ShowAddRerollPopup()
+    local newRerollBlacklist = {}
+
+    for index, guildMember in ipairs(GT_Data.guildMembers) do
+        if GT_RerollService:IsAReroll(guildMember.name) -- On ne peut pas ajouter un perso qui est déjà un reroll
+            or next(GT_RerollService:GetRerolls(guildMember.name)) ~= nil -- On ne peut pas ajouter un perso qui a déjà des rerolls
+            or guildMember.name == selectedMain -- On ne peut pas ajouter un perso en reroll à lui même
+        then
+            table.insert(newRerollBlacklist, guildMember.name)
+        end
+    end
+
+    GT_SelectGuildMemberPopup:SetTitle(string.format(GT_LocaleManager:GetLabel("addrerollpopup.title"), selectedMain))
+    GT_SelectGuildMemberPopup:SetBlacklist(newRerollBlacklist)
+    GT_SelectGuildMemberPopup:SetCallback(function(rerollName)
+        GT_RerollService:AddReroll(selectedMain, rerollName)
+        GT_MemberDetailFrame:Update()
+    end)
+    GT_SelectGuildMemberPopup:Show()
+end
+
 GT_MemberDetailFrame.mainFrame.addRerollButton = CreateFrame("Button", "AddRerollButton", GT_MemberDetailFrame.mainFrame, "UIPanelButtonTemplate")
 GT_MemberDetailFrame.mainFrame.addRerollButton:SetSize(20, 20)
 GT_MemberDetailFrame.mainFrame.addRerollButton:SetPoint("TOPLEFT", 55, -35)
 GT_MemberDetailFrame.mainFrame.addRerollButton:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
 GT_MemberDetailFrame.mainFrame.addRerollButton:SetPushedTexture("Interface\\Buttons\\UI-PlusButton-Down")
 GT_MemberDetailFrame.mainFrame.addRerollButton:SetScript('OnClick', function()
-	if GT_AddRerollPopup:IsShown() then
-		GT_AddRerollPopup:Hide()
+	if GT_SelectGuildMemberPopup:IsShown() then
+		GT_SelectGuildMemberPopup:Hide()
 	else
-		GT_AddRerollPopup.mainName = selectedMain
-		GT_AddRerollPopup:Show()
+	    ShowAddRerollPopup()
 	end
 end)
-
-GT_AddRerollPopup.addRerollCallback = function(rerollName)
-	GT_RerollService:AddReroll(selectedMain, rerollName)
-	GT_MemberDetailFrame:Update()
-end
 
 GT_MemberDetailFrame.mainFrame.rerollsFrames = {}
 

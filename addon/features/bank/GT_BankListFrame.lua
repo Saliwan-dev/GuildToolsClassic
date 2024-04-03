@@ -58,7 +58,7 @@ end
 local function Update()
     GT_BankListFrame:Clear()
 
-    for index, bankChar in ipairs({"Zenitbanker", "toto"}) do
+    for index, bankChar in ipairs(GT_BankService:GetBankChars()) do
         initBankCharFrame(index, bankChar)
     end
 end

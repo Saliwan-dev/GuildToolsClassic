@@ -1,5 +1,4 @@
 == Fonctionalités
-    Traduction "Ajout d'un reroll à ..."
     Indicateur de mort pour le mode HC
     Banque de guilde
     Paramètres par perso (position icone minimap)
@@ -17,6 +16,5 @@
 
 == Technique
     Separer les datas par guilde
-    Changement de gestion pour la locale (utiliser des tables statiques avec message pour reload)
     Ajout d'une option de debug
     Gestion du cas A reroll de B et B reroll de C

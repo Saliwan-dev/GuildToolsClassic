@@ -32,11 +32,14 @@ addon/features/hardcore/GT_HardcoreService.lua
 addon/features/hardcore/GT_HardcoreSynchronizer.lua
 addon/features/reroll/GT_RerollService.lua
 addon/features/reroll/GT_RerollSynchronizer.lua
+addon/features/bank/GT_BankService.lua
 
 ## View
+addon/GT_SelectGuildMemberPopup.lua
 addon/features/reroll/GT_AddRerollPopup.lua
 addon/options/GT_OptionsPanel.lua
 addon/GT_MainFrame.lua
+addon/GT_AdminPanel.lua
 addon/GT_MemberListFrame.lua
 addon/GT_MemberDetailFrame.lua
 addon/features/bank/GT_BankListFrame.lua

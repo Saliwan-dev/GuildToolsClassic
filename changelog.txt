@@ -1,3 +1,7 @@
+### = develop
+**Technical**
+- Fix locale bug
+
 ### = 0.0.5
 **Technical**
 - Fix bug in data synchronizer

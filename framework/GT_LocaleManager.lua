@@ -3,20 +3,15 @@ GT_LocaleManager.locales = {}
 GT_LocaleManager.favoriteLocale = nil
 
 function GT_LocaleManager:GetLabel(key)
-    --print("Calcul du label "..key)
-    --print("Locale favorite "..tostring(GT_LocaleManager.favoriteLocale))
-
-    local locale = "enUS"
+    local locale = GetLocale()
     if GT_LocaleManager.favoriteLocale ~= nil then
         locale = GT_LocaleManager.favoriteLocale
     end
 
     if GT_LocaleManager.locales[locale] == nil then
-        --print(locale)
         GT_LocaleManager.locales[locale] = {}
     end
 
-    --print(GT_LocaleManager.locales[locale][key])
     local labelWithLocale = GT_LocaleManager.locales[locale][key]
 
     if labelWithLocale == nil then
