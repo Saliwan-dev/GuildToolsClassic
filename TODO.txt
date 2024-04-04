@@ -1,13 +1,3 @@
-0.1.0
-    Features
-
-    Technical
-        Separer les datas par guilde
-        Ajout d'une option de debug
-        Gerer l'initialisation des données (cas de la guilde non trouvée)
-        Vérifier la condition d'accès de l'onglet admin
-
-
 == Fonctionalités
     - Indicateur de version d'addon
     - Indicateur de mort pour le mode HC
@@ -22,8 +12,12 @@
         Laisser le personnage sélectionné en surbrillance dans les listes de perso
     - Calendrier
     - Deathlog
+    - Gestion des droits interne à l'addon
 
 == Technique
+    Fix pour le chargement des icones en banque
     Optimisation des données à synchroniser
+    Limitation du flux de données si beaucoup de données à synchroniser
     Gestion du cas A reroll de B et B reroll de C
-    Paramètres par perso (position icone minimap)
+    Parametres par perso (position icone minimap)
+    Ajout d'une option de debug

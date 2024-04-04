@@ -5,6 +5,7 @@
 
 **Technical**
 - Fix locale bug
+- Addon loading rework
 
 ### = 0.0.5
 **Technical**

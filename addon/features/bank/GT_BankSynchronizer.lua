@@ -6,7 +6,7 @@ GT_EventManager:AddEventListener("ADDON_READY", function()
         function(historyEntry)
             if not IsInTable(GT_Data.bankCharsHistory, historyEntry) then
                 table.insert(GT_Data.bankCharsHistory, historyEntry)
-                --GT_EventManager:PublishEvent("REROLL_UPDATED_FROM_GUILD")
+                GT_EventManager:PublishEvent("BANKCHAR_UPDATED_FROM_GUILD", historyEntry)
             end
         end,
         {"ADD_BANKCHAR", "REMOVE_BANKCHAR"})

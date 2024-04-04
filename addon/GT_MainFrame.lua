@@ -104,5 +104,5 @@ borderFrame:SetFrameLevel(99)
 table.insert(UISpecialFrames, "GT_MainFrame")
 
 GT_EventManager:AddEventListener("ADDON_READY", function()
-    adminTab:SetShown(select(3, GetGuildInfo("player")) < 2)
+    adminTab:SetShown(C_GuildInfo.CanEditOfficerNote()) --Show the tab if player has edit_officer_note flag
 end)

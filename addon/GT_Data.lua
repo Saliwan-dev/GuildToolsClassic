@@ -4,18 +4,6 @@ GT_Data.guildMembers = {}
 local realmName = GetRealmName()
 local guildName
 
-local function InitDataAfterGettingGuildName()
-    local maxTimeToWait = 10
-
-    C_Timer.NewTicker(1, function(self)
-        guildName = GetGuildInfo("player")
-        if (guildName != nil) then
-            self:Cancel()
-            InitData()
-        end
-    end, maxTimeToWait)
-end
-
 local function InitData()
     if GT_SavedData == nil then GT_SavedData = {} end
     if GT_SavedData.options == nil then GT_SavedData.options = {} end
@@ -23,21 +11,30 @@ local function InitData()
     if GT_SavedData.options.minimapButton.minimapPos == nil then GT_SavedData.options.minimapButton.minimapPos = 200 end
     if GT_SavedData[realmName] == nil then GT_SavedData[realmName] = {} end
     if GT_SavedData[realmName][guildName] == nil then GT_SavedData[realmName][guildName] = {} end
-    if GT_SavedData[realmName].rerollHistory == nil then
-        if GT_SavedData.rerollHistory ~= nil then --Recuperation des datas de la 0.0.2
-            GT_SavedData[realmName].rerollHistory = GT_SavedData.rerollHistory
+
+    if GT_SavedData[realmName][guildName].rerollHistory == nil then
+        if GT_SavedData[realmName].rerollHistory ~= nil then -- Recuperation des datas de la 0.0.5
+            GT_SavedData[realmName][guildName].rerollHistory = GT_SavedData[realmName].rerollHistory
+            GT_SavedData[realmName].rerollHistory = nil
+            GT_SavedData.rerollHistory = nil
+        elseif GT_SavedData.rerollHistory ~= nil then --Recuperation des datas de la 0.0.2
+            GT_SavedData[realmName][guildName].rerollHistory = GT_SavedData.rerollHistory
             GT_SavedData.rerollHistory = nil
         else
-            GT_SavedData[realmName].rerollHistory = {}
+            GT_SavedData[realmName][guildName].rerollHistory = {}
         end
     end
 
-    if GT_SavedData[realmName].selffoundHistory == nil then
-        if GT_SavedData.selffoundHistory ~= nil then --Recuperation des datas de la 0.0.2
-            GT_SavedData[realmName].selffoundHistory = GT_SavedData.selffoundHistory
+    if GT_SavedData[realmName][guildName].selffoundHistory == nil then
+        if GT_SavedData[realmName].selffoundHistory ~= nil then -- Recuperation des datas de la 0.0.5
+            GT_SavedData[realmName][guildName].selffoundHistory = GT_SavedData[realmName].selffoundHistory
+            GT_SavedData[realmName].selffoundHistory = nil
+            GT_SavedData.selffoundHistory = nil
+        elseif GT_SavedData.selffoundHistory ~= nil then --Recuperation des datas de la 0.0.2
+            GT_SavedData[realmName][guildName].selffoundHistory = GT_SavedData.selffoundHistory
             GT_SavedData.selffoundHistory = nil
         else
-            GT_SavedData[realmName].selffoundHistory = {}
+            GT_SavedData[realmName][guildName].selffoundHistory = {}
         end
     end
 
@@ -45,8 +42,8 @@ local function InitData()
     if GT_SavedData[realmName][guildName].bankContentHistory == nil then GT_SavedData[realmName][guildName].bankContentHistory = {} end
 
     -- Alias
-    GT_Data.rerollHistory = GT_SavedData[realmName].rerollHistory
-    GT_Data.selffoundHistory = GT_SavedData[realmName].selffoundHistory
+    GT_Data.rerollHistory = GT_SavedData[realmName][guildName].rerollHistory
+    GT_Data.selffoundHistory = GT_SavedData[realmName][guildName].selffoundHistory
     GT_Data.bankCharsHistory = GT_SavedData[realmName][guildName].bankCharsHistory
     GT_Data.bankContentHistory = GT_SavedData[realmName][guildName].bankContentHistory
 
@@ -63,6 +60,18 @@ local function InitData()
     GuildRoster()
 
     GT_EventManager:PublishEvent("ADDON_READY")
+end
+
+local function InitDataAfterGettingGuildName()
+    local maxTimeToWait = 10
+
+    C_Timer.NewTicker(1, function(self)
+        guildName = GetGuildInfo("player")
+        if guildName ~= nil then
+            self:Cancel()
+            InitData()
+        end
+    end, maxTimeToWait)
 end
 
 local function OnGuildRosterUpdate()

@@ -38,7 +38,7 @@ local function UpdateLocalSavedBankData()
     GT_CharacterSavedData.bankContent = bankContent
 end
 
-local function OnBankFrameOpen()
+local function SynchronizeWithAddonData()
     UpdateLocalSavedBankData()
 
     local myName = UnitName("player")
@@ -95,8 +95,22 @@ eventHandler:RegisterEvent("BANKFRAME_OPENED")
 eventHandler:RegisterEvent("BANKFRAME_CLOSED")
 eventHandler:SetScript("OnEvent", function(self, event, ...)
     if event == "BANKFRAME_OPENED" then
-        OnBankFrameOpen()
+        SynchronizeWithAddonData()
     elseif event == "BANKFRAME_CLOSED" then
         OnBankFrameClosed()
+    end
+end)
+
+GT_EventManager:AddEventListener("BANKCHAR_UPDATED_FROM_GUILD", function(historyEntry)
+    local _, _, time, action, from, bankChar = string.find(historyEntry, "([^:]+):([^:]+):([^:]+):(.+)")
+    if action == "ADD_BANKCHAR" and bankChar == UnitName("player") then
+        SynchronizeWithAddonData()
+    end
+end)
+
+GT_EventManager:AddEventListener("ADD_BANKCHAR", function(historyEntry)
+    local _, _, time, action, from, bankChar = string.find(historyEntry, "([^:]+):([^:]+):([^:]+):(.+)")
+    if action == "ADD_BANKCHAR" and bankChar == UnitName("player") then
+        SynchronizeWithAddonData()
     end
 end)
