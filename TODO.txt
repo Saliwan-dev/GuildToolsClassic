@@ -1,20 +1,29 @@
+0.1.0
+    Features
+
+    Technical
+        Separer les datas par guilde
+        Ajout d'une option de debug
+        Gerer l'initialisation des données (cas de la guilde non trouvée)
+        Vérifier la condition d'accès de l'onglet admin
+
+
 == Fonctionalités
-    Indicateur de mort pour le mode HC
-    Banque de guilde
-    Paramètres par perso (position icone minimap)
-    Paramètres :
+    - Indicateur de version d'addon
+    - Indicateur de mort pour le mode HC
+    - Paramètres :
         Cacher icone minimap
         Raccourci pour ouvrir le menu
         Cacher icone panel guilde
-    Tri de la liste des membres de guilde
-    Barre de recherche de la liste des membre de guilde
-    Ajout d'un main depuis un reroll
-    Calendrier
-    Onglet administration accessible seulement pour les officiers
-    Deathlog
-    Laisser le personnage sélectionné en surbrillance dans les listes de perso
+    - Rerolls :
+        Tri de la liste des membres de guilde
+        Barre de recherche de la liste des membre de guilde
+        Ajout d'un main depuis un reroll
+        Laisser le personnage sélectionné en surbrillance dans les listes de perso
+    - Calendrier
+    - Deathlog
 
 == Technique
-    Separer les datas par guilde
-    Ajout d'une option de debug
+    Optimisation des données à synchroniser
     Gestion du cas A reroll de B et B reroll de C
+    Paramètres par perso (position icone minimap)

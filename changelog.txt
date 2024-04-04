@@ -1,4 +1,8 @@
 ### = develop
+**Features**
+- New Guild Bank Feature
+- New Admin Tab for bank char management
+
 **Technical**
 - Fix locale bug
 

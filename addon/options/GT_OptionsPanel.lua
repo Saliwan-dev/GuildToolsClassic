@@ -23,25 +23,22 @@ function localeDropDown:OnNewValue(newValue)
     CloseDropDownMenus()
 end
 
-GT_OptionsPanel:RegisterEvent("ADDON_LOADED")
-GT_OptionsPanel:SetScript("OnEvent", function(self, event, arg1)
-    if event == "ADDON_LOADED" and arg1 == "GuildTools" then
-        local favoriteLocale = GT_OptionsService:GetOption("locale")
-        GT_LocaleManager:SetFavoriteLocale(favoriteLocale)
+GT_EventManager:AddEventListener("ADDON_READY", function()
+    local favoriteLocale = GT_OptionsService:GetOption("locale")
+    GT_LocaleManager:SetFavoriteLocale(favoriteLocale)
 
-        UIDropDownMenu_SetText(localeDropDown, favoriteLocale)
+    UIDropDownMenu_SetText(localeDropDown, favoriteLocale)
 
-        UIDropDownMenu_Initialize(localeDropDown, function(self, level, menuList)
-            local info = UIDropDownMenu_CreateInfo()
-            info.func = function(self, arg1, arg2, checked) localeDropDown:OnNewValue(arg1) end
+    UIDropDownMenu_Initialize(localeDropDown, function(self, level, menuList)
+        local info = UIDropDownMenu_CreateInfo()
+        info.func = function(self, arg1, arg2, checked) localeDropDown:OnNewValue(arg1) end
 
-            info.text, info.arg1, info.checked = "frFR", "frFR", GT_OptionsService:GetOption("locale") == "frFR"
-            info.menuList, info.hasArrow = 1, false
-            UIDropDownMenu_AddButton(info)
+        info.text, info.arg1, info.checked = "frFR", "frFR", GT_OptionsService:GetOption("locale") == "frFR"
+        info.menuList, info.hasArrow = 1, false
+        UIDropDownMenu_AddButton(info)
 
-            info.text, info.arg1, info.checked = "enUS", "enUS", GT_OptionsService:GetOption("locale") == "enUS"
-            info.menuList, info.hasArrow = 2, false
-            UIDropDownMenu_AddButton(info)
-        end)
-    end
+        info.text, info.arg1, info.checked = "enUS", "enUS", GT_OptionsService:GetOption("locale") == "enUS"
+        info.menuList, info.hasArrow = 2, false
+        UIDropDownMenu_AddButton(info)
+    end)
 end)

@@ -1,6 +1,6 @@
 local backdropInfo =
 {
-    bgFile="Interface/FrameGeneral/UI-Background-Rock",
+    bgFile="Interface\\FrameGeneral\\UI-Background-Rock",
     edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border",
  	tile = true,
  	tileEdge = true,
@@ -100,15 +100,9 @@ borderFrame:SetSize(48, 48)
 borderFrame:SetBackdrop(guildPanelButtonBackdrop)
 borderFrame:SetFrameLevel(99)
 
--- Permet de fermer la fenêtre avec Echap
+-- Allow to close frame with escape button
 table.insert(UISpecialFrames, "GT_MainFrame")
 
-local eventHandler = CreateFrame("Frame")
-eventHandler:RegisterEvent("PLAYER_ENTERING_WORLD")
-eventHandler:SetScript("OnEvent", function(self, event, ...)
-    if event == "PLAYER_ENTERING_WORLD" then
-        C_Timer.After(1, function() --On laisse aux buff le temps de se charger
-            adminTab:SetShown(select(3, GetGuildInfo("player")) < 2)
-        end)
-    end
+GT_EventManager:AddEventListener("ADDON_READY", function()
+    adminTab:SetShown(select(3, GetGuildInfo("player")) < 2)
 end)
