@@ -9,16 +9,16 @@ local backdropInfo =
  	insets = { left = 1, right = 1, top = 1, bottom = 1 },
 }
 
-GT_MemberListFrame = CreateFrame("Frame", nil, GT_MainFrame, "BackdropTemplate")
-GT_MemberListFrame:SetPoint("TOPLEFT", 5, -25)
-GT_MemberListFrame:SetSize(170, GT_MainFrame:GetHeight() - 10 - 20)
+GT_MemberListFrame = CreateFrame("Frame", nil, GT_GuildMembersTabContent, "BackdropTemplate")
+GT_MemberListFrame:SetPoint("TOPLEFT")
+GT_MemberListFrame:SetSize(150, GT_GuildMembersTabContent:GetHeight() - 32)
 GT_MemberListFrame:SetBackdrop(backdropInfo)
 
 local scrollFrame = CreateFrame("ScrollFrame", nil, GT_MemberListFrame, "UIPanelScrollFrameTemplate")
 scrollFrame:SetPoint("TOPLEFT", 3, -4)
 scrollFrame:SetPoint("BOTTOMRIGHT", -27, 4)
 
-scrollChild = CreateFrame("Frame")
+local scrollChild = CreateFrame("Frame")
 scrollFrame:SetScrollChild(scrollChild)
 scrollChild:SetWidth(GT_MemberListFrame:GetWidth()-18)
 scrollChild:SetHeight(1)
@@ -78,7 +78,7 @@ local function initGuildMemberEntryFrame(index, name, isOnline, isSelffound)
 	GT_MemberListFrame.guildMemberFrames[index]:SetScript('OnClick', function()
 		GT_MemberDetailFrame:SetData(name)
 		GT_MemberDetailFrame:Show()
-		GT_AddRerollPopup:Hide()
+		GT_SelectGuildMemberPopup:Hide()
 	end)
 
     GT_MemberListFrame.guildMemberFrames[index]:SetPoint("TOPLEFT", 0, -15 * (index - 1))

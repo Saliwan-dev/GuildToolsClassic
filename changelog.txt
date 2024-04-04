@@ -1,3 +1,12 @@
+### = develop
+**Features**
+- New Guild Bank Feature
+- New Admin Tab for bank char management
+
+**Technical**
+- Fix locale bug
+- Addon loading rework
+
 ### = 0.0.5
 **Technical**
 - Fix bug in data synchronizer

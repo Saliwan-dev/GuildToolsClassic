@@ -1,9 +1,5 @@
 GT_SynchronizerFactory = {}
 
--- prefix : Le préfixe des messages SendAddonMessage
--- getDataFunction : Une function qui renvoie la table des datas à synchronizer
--- saveDataFunction : Une fonction qui prend le message et enregistre les données
--- eventToSendMessage : Une table des events sur lesquel il y a une synchronization à faire
 function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, saveDataFunction, eventToSendMessage)
     local synchronizer = {}
     synchronizer.prefix = prefix
@@ -16,8 +12,6 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
         if self.hash ~= nil then
             return self.hash
         end
-
-        local m = md5.new()
 
         local stringToHash = ""
         for index, savedEntry in ipairs(self.getDataFunction()) do
@@ -53,11 +47,9 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
     end
 
     -- RECEIVE
-
     synchronizer.playerNameByHash = {}
     synchronizer.syncNeeded = false
     synchronizer.eventHandler = CreateFrame("Frame")
-    synchronizer.eventHandler:RegisterEvent("PLAYER_ENTERING_WORLD")
     synchronizer.eventHandler:RegisterEvent("CHAT_MSG_ADDON")
     synchronizer.eventHandler:SetScript("OnEvent", function(self, event, ...)
         if event == "CHAT_MSG_ADDON" then
@@ -67,7 +59,7 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 return
             end
 
-            --print("[GT]".."["..prefix.."]"..message)
+            print("[GT]".."["..prefix.."]"..message)
 
             local splitedMessage = StringSplit(message, ":")
             local messageType = unpack(splitedMessage)
@@ -105,14 +97,8 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 end
             end
         end
-
-        if event == "PLAYER_ENTERING_WORLD" then
-            local isLogin, isReload = ...
-            if isLogin or isReload then
-                C_ChatInfo.RegisterAddonMessagePrefix(synchronizer.prefix)
-            end
-
-            ChatThrottleLib:SendAddonMessage("BULK", synchronizer.prefix, "CHECK_SYNC", "GUILD")
-        end
     end)
+
+    C_ChatInfo.RegisterAddonMessagePrefix(synchronizer.prefix)
+    ChatThrottleLib:SendAddonMessage("BULK", synchronizer.prefix, "CHECK_SYNC", "GUILD")
 end

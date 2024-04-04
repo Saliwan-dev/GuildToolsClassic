@@ -1,21 +1,23 @@
 == Fonctionalités
-    Traduction "Ajout d'un reroll à ..."
-    Indicateur de mort pour le mode HC
-    Banque de guilde
-    Paramètres par perso (position icone minimap)
-    Paramètres :
+    - Indicateur de version d'addon
+    - Indicateur de mort pour le mode HC
+    - Paramètres :
         Cacher icone minimap
         Raccourci pour ouvrir le menu
         Cacher icone panel guilde
-    Tri de la liste des membres de guilde
-    Barre de recherche de la liste des membre de guilde
-    Ajout d'un main depuis un reroll
-    Calendrier
-    Onglet administration accessible seulement pour les officiers
-    Deathlog
+    - Rerolls :
+        Tri de la liste des membres de guilde
+        Barre de recherche de la liste des membre de guilde
+        Ajout d'un main depuis un reroll
+        Laisser le personnage sélectionné en surbrillance dans les listes de perso
+    - Calendrier
+    - Deathlog
+    - Gestion des droits interne à l'addon
 
 == Technique
-    Separer les datas par guilde
-    Changement de gestion pour la locale (utiliser des tables statiques avec message pour reload)
-    Ajout d'une option de debug
+    Fix pour le chargement des icones en banque
+    Optimisation des données à synchroniser
+    Limitation du flux de données si beaucoup de données à synchroniser
     Gestion du cas A reroll de B et B reroll de C
+    Parametres par perso (position icone minimap)
+    Ajout d'une option de debug

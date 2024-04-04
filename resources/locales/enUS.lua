@@ -4,5 +4,15 @@ GT_LocaleManager.locales["enUS"] = {
     ["open"]="Open",
     ["options"]="settings",
     ["optionspanel.localelabel"]="Language",
-    ["memberdetailframe.rerollframe.sfcheckbox"]="Self-Found"
+
+    ["mainframe.tabs.members"]="Members",
+    ["mainframe.tabs.bank"]="Bank",
+    ["mainframe.tabs.admin"]="Admin",
+
+    ["memberdetailframe.rerollframe.sfcheckbox"]="Self-Found",
+
+    ["addrerollpopup.title"]="Add a reroll to %s",
+
+    ["adminpanel.bankcharlabel"]="Guild banks",
+    ["addBankCharPopup.title"]="Add a guild bank",
 }

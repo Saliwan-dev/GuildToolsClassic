@@ -27,40 +27,32 @@ function GT_HardcoreService:IsSelffound(name)
     return isSelffound
 end
 
-local eventHandler = CreateFrame("Frame")
-eventHandler:RegisterEvent("PLAYER_ENTERING_WORLD")
-eventHandler:RegisterEvent("CHAT_MSG_ADDON")
-eventHandler:SetScript("OnEvent", function(self, event, ...)
-    if event == "PLAYER_ENTERING_WORLD" then
-        local isLogin, isReload = ...
-        if isLogin then
-            C_Timer.After(1, function() --On laisse aux buff le temps de se charger
-                --Set Selffound data auto
-                local playerName = UnitName("player")
-                local hasSelffoundBuff = false
+GT_EventManager:AddEventListener("ADDON_READY", function()
+    C_Timer.After(1, function() --On laisse aux buff le temps de se charger (A voir si c'est nécessaire avec le ADDON_READY)
+        --Set Selffound data auto
+        local playerName = UnitName("player")
+        local hasSelffoundBuff = false
 
-                local buffIndex = 1
-                while true do
-                    local spellId = select(10, UnitBuff("player", buffIndex))
+        local buffIndex = 1
+        while true do
+            local spellId = select(10, UnitBuff("player", buffIndex))
 
-                    if spellId == nil or buffIndex > 100 then
-                        break
-                    end
+            if spellId == nil or buffIndex > 100 then
+                break
+            end
 
-                    if spellId == 431567 then
-                        hasSelffoundBuff = true
-                        break
-                    end
+            if spellId == 431567 then
+                hasSelffoundBuff = true
+                break
+            end
 
-                    buffIndex = buffIndex + 1
-                end
-
-                local isSelffoundInAddonData = GT_HardcoreService:IsSelffound(playerName)
-
-                if hasSelffoundBuff ~= isSelffoundInAddonData then
-                    GT_HardcoreService:SetSelffound(playerName, hasSelffoundBuff)
-                end
-            end)
+            buffIndex = buffIndex + 1
         end
-    end
+
+        local isSelffoundInAddonData = GT_HardcoreService:IsSelffound(playerName)
+
+        if hasSelffoundBuff ~= isSelffoundInAddonData then
+            GT_HardcoreService:SetSelffound(playerName, hasSelffoundBuff)
+        end
+    end)
 end)
