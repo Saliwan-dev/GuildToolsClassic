@@ -11,17 +11,7 @@ local function OnMailClosed()
         return
     end
 
-    print("Inventaire avant mail")
-    for itemLink, quantity in pairs(beforeMailInventory) do
-        print(itemLink.." -> "..quantity)
-    end
-
     local afterMailInventory = GetInventoryContentWithoutBoundItems()
-
-    print("Inventaire apres mail")
-    for itemLink, quantity in pairs(afterMailInventory) do
-        print(itemLink.." -> "..quantity)
-    end
 
     local itemsToAdd = {}
     for itemLink, quantity in pairs(afterMailInventory) do

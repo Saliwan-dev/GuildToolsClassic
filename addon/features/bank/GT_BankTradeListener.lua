@@ -23,18 +23,8 @@ local function OnTradeClosed()
         return
     end
 
-    print("Inventaire avant trade")
-    for itemLink, quantity in pairs(beforeTradeInventory) do
-        print(itemLink.." -> "..quantity)
-    end
-
     C_Timer.After(1, function()
         local afterTradeInventory = GetInventoryContentWithoutBoundItems()
-
-        print("Inventaire apres trade")
-        for itemLink, quantity in pairs(afterTradeInventory) do
-            print(itemLink.." -> "..quantity)
-        end
 
         local itemsToAdd = {}
         for itemLink, quantity in pairs(afterTradeInventory) do

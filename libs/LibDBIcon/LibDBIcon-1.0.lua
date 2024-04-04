@@ -190,11 +190,9 @@ do
 		px, py = px / scale, py / scale
 		local pos = 225
 		if self.db then
-		    print("ICI")
 			pos = deg(atan2(py - my, px - mx)) % 360
 			self.db.minimapPos = pos
 		else
-		    print("NON ICI")
 			pos = deg(atan2(py - my, px - mx)) % 360
 			self.minimapPos = pos
 		end
