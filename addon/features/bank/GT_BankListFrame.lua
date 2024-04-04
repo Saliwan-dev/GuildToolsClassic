@@ -52,6 +52,7 @@ local function initBankCharFrame(index, name, isSelffound)
 
 	GT_BankListFrame.bankCharFrames[index]:SetScript('OnClick', function()
 	    GT_BankDetailFrame:SetSelectedBankChar(name)
+	    GT_BankDetailFrame:Show()
 	end)
 end
 

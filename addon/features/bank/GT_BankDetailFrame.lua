@@ -11,18 +11,12 @@ local selectedBankChar = ""
 
 local itemCount = 0
 
+GT_BankDetailFrame.itemFrames = {}
+
 function GT_BankDetailFrame:SetSelectedBankChar(newSelectedBankChar)
     selectedBankChar = newSelectedBankChar
 
     self:Update()
-end
-
-function GT_BankDetailFrame:Update()
-    selectedBankCharLabel:SetText(selectedBankChar)
-
-    itemCount = 0
-
-    GT_BankDetailFrame:Show()
 end
 
 local bankContentBackdrop =
@@ -68,50 +62,67 @@ local function AddItem(itemLink, quantity)
     expacID, setID, isCraftingReagent =
         GetItemInfo(itemId)
 
-    itemFrame = CreateFrame("Frame", nil, scrollChild)
-    itemFrame:SetSize(40, 40)
-    itemFrame:SetPoint("TOPLEFT",2 + 44.5 * (itemCount % 8),-2 - 44.5 * math.floor(itemCount / 8))
+    local frameIndex = itemCount + 1
+    if GT_BankDetailFrame.itemFrames[frameIndex] == nil then
+        GT_BankDetailFrame.itemFrames[frameIndex] = CreateFrame("Frame", nil, scrollChild)
+        GT_BankDetailFrame.itemFrames[frameIndex]:SetSize(40, 40)
+        GT_BankDetailFrame.itemFrames[frameIndex]:SetPoint("TOPLEFT",2 + 44.5 * (itemCount % 8),-2 - 44.5 * math.floor(itemCount / 8))
 
-    itemFrame.tex = itemFrame:CreateTexture()
-    itemFrame.tex:SetAllPoints(true)
-    itemFrame.tex:SetTexture(itemTexture)
+        GT_BankDetailFrame.itemFrames[frameIndex].tex = GT_BankDetailFrame.itemFrames[frameIndex]:CreateTexture()
+        GT_BankDetailFrame.itemFrames[frameIndex].tex:SetAllPoints(true)
 
-    itemFrame.quantityLabel = GT_UIFactory:CreateLabel(itemFrame, 0, 0, "", 12, 1, 1, 1)
-    itemFrame.quantityLabel:ClearAllPoints()
-    itemFrame.quantityLabel:SetPoint("TOPRIGHT", itemFrame, "BOTTOMRIGHT", -2, 15)
-    itemFrame.quantityLabel:SetText(tostring(quantity))
-    itemFrame.quantityLabel:SetShown(quantity ~= 1)
+        GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel = GT_UIFactory:CreateLabel(GT_BankDetailFrame.itemFrames[frameIndex], 0, 0, "", 12, 1, 1, 1)
+        GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel:ClearAllPoints()
+        GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel:SetPoint("TOPRIGHT", GT_BankDetailFrame.itemFrames[frameIndex], "BOTTOMRIGHT", -2, 15)
 
-    highlightFrame = CreateFrame("Button", nil, itemFrame)
-    highlightFrame:SetSize(40, 40)
-    highlightFrame:SetPoint("CENTER")
-    highlightFrame:SetHighlightTexture("Interface/Buttons/ButtonHilight-Square.PNG")
-    highlightFrame:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress.PNG")
+        GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame = CreateFrame("Button", nil, GT_BankDetailFrame.itemFrames[frameIndex])
+        GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetSize(40, 40)
+        GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetPoint("CENTER")
+        GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetHighlightTexture("Interface/Buttons/ButtonHilight-Square.PNG")
+        GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress.PNG")
+    end
 
-    highlightFrame:SetScript("OnEnter", function(self)
+    GT_BankDetailFrame.itemFrames[frameIndex].tex:SetTexture(itemTexture)
+
+    GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel:SetText(tostring(quantity))
+    GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel:SetShown(quantity ~= 1)
+
+    GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_LEFT")
         GameTooltip:SetHyperlink("item:"..itemId..":0:0:0:0:0:0:0")
     end)
 
-    highlightFrame:SetScript("OnLeave", function(self)
+    GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetScript("OnLeave", function(self)
         GameTooltip:Hide()
     end)
 
-    highlightFrame:SetScript("OnClick", function(self)
-        print(itemTexture)
-    end)
-
-    scrollChild:SetSize(GT_BankContentFrame:GetWidth(), 44.5 * math.max(7, (math.floor(itemCount / 8) + 1)))
+    GT_BankDetailFrame.itemFrames[frameIndex]:Show()
 
     itemCount = itemCount + 1
+
+    scrollChild:SetSize(GT_BankContentFrame:GetWidth(), 44.5 * math.max(7, (math.floor(itemCount / 8) + 1)))
 end
 
-for bagID = 0, 4 do
-    local numSlot = C_Container.GetContainerNumSlots(bagID)
-    for slot = 1, numSlot do
-        local containerInfo = C_Container.GetContainerItemInfo(bagID, slot)
-        if containerInfo ~= nil then
-            AddItem(containerInfo.hyperlink, containerInfo.stackCount)
-        end
+local function Clear()
+    for index, itemFrame in ipairs(GT_BankDetailFrame.itemFrames) do
+        itemFrame:Hide()
+    end
+
+    itemCount = 0
+end
+
+function GT_BankDetailFrame:Update()
+    selectedBankCharLabel:SetText(selectedBankChar)
+
+    Clear()
+
+    local bankContent = GT_BankService:GetBankContent(selectedBankChar)
+
+    for link, quantity in pairs(bankContent) do
+        AddItem(link, quantity)
     end
 end
+
+GT_BankDetailFrame:SetScript("OnShow", function()
+    GT_BankDetailFrame:Update()
+end)

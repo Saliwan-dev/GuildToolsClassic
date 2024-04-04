@@ -4,6 +4,7 @@
 ## Version: {{version}}
 ## OptionalDeps: Prat-3.0
 ## SavedVariables: GT_SavedData
+## SavedVariablesPerCharacter: GT_CharacterSavedData
 
 ## Libs
 libs/md5/md5.lua
@@ -33,6 +34,10 @@ addon/features/hardcore/GT_HardcoreSynchronizer.lua
 addon/features/reroll/GT_RerollService.lua
 addon/features/reroll/GT_RerollSynchronizer.lua
 addon/features/bank/GT_BankService.lua
+addon/features/bank/GT_BankSynchronizer.lua
+addon/features/bank/GT_BankInventoryScanner.lua
+addon/features/bank/GT_BankTradeListener.lua
+addon/features/bank/GT_BankMailListener.lua
 
 ## View
 addon/GT_SelectGuildMemberPopup.lua

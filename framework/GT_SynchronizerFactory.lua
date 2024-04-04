@@ -67,7 +67,7 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 return
             end
 
-            --print("[GT]".."["..prefix.."]"..message)
+            print("[GT]".."["..prefix.."]"..message)
 
             local splitedMessage = StringSplit(message, ":")
             local messageType = unpack(splitedMessage)
