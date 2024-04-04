@@ -1,4 +1,4 @@
-### = develop
+### = 0.1.0
 **Features**
 - New Guild Bank Feature
 - New Admin Tab for bank char management
@@ -6,6 +6,7 @@
 **Technical**
 - Fix locale bug
 - Addon loading rework
+- Data are now split by guild in a realm
 
 ### = 0.0.5
 **Technical**
