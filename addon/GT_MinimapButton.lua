@@ -20,5 +20,5 @@ local GuildToolsLDB = LibStub("LibDataBroker-1.1"):NewDataObject("GuildTools", {
 local libDbIcon = LibStub("LibDBIcon-1.0")
 
 GT_EventManager:AddEventListener("ADDON_READY", function()
-    libDbIcon:Register("GuildTools", GuildToolsLDB, GT_SavedData.options.minimapButton);
+    libDbIcon:Register("GuildTools", GuildToolsLDB, GT_CharacterSavedData.options.minimapButton);
 end)
