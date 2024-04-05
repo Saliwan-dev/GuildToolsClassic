@@ -1,11 +1,12 @@
 GT_SynchronizerFactory = {}
 
-function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, saveDataFunction, eventToSendMessage)
+function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, saveDataFunction, eventToSendMessage, debug)
     local synchronizer = {}
     synchronizer.prefix = prefix
     synchronizer.getDataFunction = getDataFunction
     synchronizer.saveDataFunction = saveDataFunction
     synchronizer.eventToSendMessage = eventToSendMessage
+    synchronizer.debug = debug
 
     -- HASH
     function synchronizer:GetHash()
@@ -59,7 +60,9 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 return
             end
 
-            --print("[GT]".."["..prefix.."]"..message)
+            if synchronizer.debug == true then
+                print("[GT]".."["..prefix.."]"..message)
+            end
 
             local splitedMessage = StringSplit(message, ":")
             local messageType = unpack(splitedMessage)
@@ -101,4 +104,6 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
 
     C_ChatInfo.RegisterAddonMessagePrefix(synchronizer.prefix)
     ChatThrottleLib:SendAddonMessage("BULK", synchronizer.prefix, "CHECK_SYNC", "GUILD")
+
+    return synchronizer
 end

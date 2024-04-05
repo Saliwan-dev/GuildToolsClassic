@@ -1,5 +1,7 @@
+local rerollSynchronizer
+
 GT_EventManager:AddEventListener("ADDON_READY", function()
-    GT_SynchronizerFactory:CreateSynchronizer("GT_Reroll",
+    rerollSynchronizer = GT_SynchronizerFactory:CreateSynchronizer("GT_Reroll",
         function() return GT_Data.rerollHistory end,
         function(historyEntry)
             if not IsInTable(GT_Data.rerollHistory, historyEntry) then
@@ -7,5 +9,12 @@ GT_EventManager:AddEventListener("ADDON_READY", function()
                 GT_EventManager:PublishEvent("REROLL_UPDATED_FROM_GUILD")
             end
         end,
-        {"ADD_REROLL", "REMOVE_REROLL"})
+        {"ADD_REROLL", "REMOVE_REROLL"},
+        GT_OptionsService:GetOption("debug"))
+end)
+
+GT_EventManager:AddEventListener("OPTION_UPDATED", function(newOption)
+    if newOption.key == "debug" and rerollSynchronizer ~= nil then
+        rerollSynchronizer.debug = newOption.value
+    end
 end)

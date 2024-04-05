@@ -20,5 +20,3 @@
         Limitation du flux de données si beaucoup de données à synchroniser
 
     - Gestion du cas A reroll de B et B reroll de C
-    - Parametres par perso (position icone minimap)
-    - Ajout d'une option de debug
