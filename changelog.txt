@@ -1,5 +1,6 @@
 ### = develop
 **Features**
+- New debug option to show debug messages
 
 **Technical**
 - Minimap button config split by character
