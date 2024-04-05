@@ -1,22 +1,35 @@
+========== PROCHAINE VERSION
 == Fonctionalités
-    - Indicateur de version d'addon
-    - Indicateur de mort pour le mode HC
-    - Paramètres :
-        Cacher icone minimap
-        Raccourci pour ouvrir le menu
-        Cacher icone panel guilde
-    - Rerolls :
-        Tri de la liste des membres de guilde
-        Barre de recherche de la liste des membre de guilde
-        Ajout d'un main depuis un reroll
-        Laisser le personnage sélectionné en surbrillance dans les listes de perso
-    - Calendrier
-    - Deathlog
-    - Gestion des droits interne à l'addon
+    - Indicateur de version d'addon (mécanisme de détection)
+    - Messages d'achievement /!\ Gestion de la locale /!\
+        Niveaux
+        Donjons en guilde
+        (Personnalisation des messages)
 
 == Technique
     - Fix pour le chargement des icones en banque
     - Optimisation des données à synchroniser
         Limitation du flux de données si beaucoup de données à synchroniser
 
+========== BACKLOG
+
+== Fonctionalités
+    - Indicateur de mort pour le mode HC
+    - Deathlog
+
+    - Paramètres :
+        Cacher icone minimap
+        Raccourci pour ouvrir le menu
+        Cacher icone panel guilde
+
+    - Rerolls :
+        Barre de recherche de la liste des membre de guilde
+        Laisser le personnage sélectionné en surbrillance dans les listes de perso
+        Tri de la liste des membres de guilde
+
+    - Calendrier
+
+    - Gestion des droits interne à l'addon
+
+== Technique
     - Gestion du cas A reroll de B et B reroll de C

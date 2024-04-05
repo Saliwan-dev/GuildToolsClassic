@@ -1,9 +1,9 @@
 ### = develop
 **Features**
-- New debug option to show debug messages
+- New debug option to show debug messages =====> A_TESTER
 
 **Technical**
-- Minimap button config split by character
+- Minimap button config split by character ======> A_TESTER
 
 ### = 0.1.1
 - Remove debug logs
