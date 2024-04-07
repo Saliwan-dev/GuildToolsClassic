@@ -1,19 +1,16 @@
 ========== PROCHAINE VERSION
-== Fonctionalités
-    - Indicateur de version d'addon (mécanisme de détection)
-    - Messages d'achievement /!\ Gestion de la locale /!\
-        Niveaux
-        Donjons en guilde
-        (Personnalisation des messages)
-
 == Technique
-    - Fix pour le chargement des icones en banque
     - Optimisation des données à synchroniser
         Limitation du flux de données si beaucoup de données à synchroniser
 
 ========== BACKLOG
 
 == Fonctionalités
+    - Indicateur de version d'addon (mécanisme de détection)
+    - Messages d'achievement /!\ Gestion de la locale /!\
+        Niveaux
+        Donjons en guilde
+        (Personnalisation des messages)
     - Indicateur de mort pour le mode HC
     - Deathlog
 

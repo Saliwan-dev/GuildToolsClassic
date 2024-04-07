@@ -1,5 +1,6 @@
 GT_Data = {}
 GT_Data.guildMembers = {}
+GT_Data.isAddonReady = false
 
 local realmName = GetRealmName()
 local guildName
@@ -61,16 +62,25 @@ local function InitData()
 
     GuildRoster()
 
+    GT_Data.isAddonReady = true
     GT_EventManager:PublishEvent("ADDON_READY")
 end
 
 local function InitDataAfterGettingGuildName()
     local maxTimeToWait = 10
+    local currentTime = 0
 
     C_Timer.NewTicker(1, function(self)
         guildName = GetGuildInfo("player")
         if guildName ~= nil then
             self:Cancel()
+            InitData()
+        end
+        currentTime = currentTime + 1
+
+        if currentTime == maxTimeToWait then
+            self:Cancel()
+            guildName = "nil"
             InitData()
         end
     end, maxTimeToWait)

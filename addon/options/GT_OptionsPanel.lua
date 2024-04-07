@@ -27,7 +27,7 @@ end
 
 -- Debug
 
-local debugCheckbox = GT_UIFactory:CreateCheckbutton(GT_OptionsPanel, 10, -65, "")
+local debugCheckbox = GT_UIFactory:CreateCheckbutton(GT_OptionsPanel, 10, -80, "")
 GT_LocaleManager:BindText(getglobal(debugCheckbox:GetName() .. 'Text'), "optionspanel.debugCheckbox")
 debugCheckbox:SetScript("OnClick",
     function()
@@ -55,4 +55,12 @@ GT_EventManager:AddEventListener("ADDON_READY", function()
     end)
 
     debugCheckbox:SetChecked(GT_OptionsService:GetOption("debug"))
+    GT_Logger:SetDebug(GT_OptionsService:GetOption("debug"))
+end)
+
+-- J'ai pas trouvé de meilleur endroit pour l'instant
+GT_EventManager:AddEventListener("OPTION_UPDATED", function(newOption)
+    if newOption.key == "debug" then
+        GT_Logger:SetDebug(newOption.value)
+    end
 end)

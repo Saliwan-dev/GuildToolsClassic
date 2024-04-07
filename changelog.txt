@@ -1,9 +1,12 @@
 ### = develop
 **Features**
-- New debug option to show debug messages =====> A_TESTER
+- New debug option to show debug messages
 
 **Technical**
-- Minimap button config split by character ======> A_TESTER
+- Minimap button config split by character
+- New Logger framework
+- Fix texture loading in banktab
+- Fix freeze on reroll data sync
 
 ### = 0.1.1
 - Remove debug logs

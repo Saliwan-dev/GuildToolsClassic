@@ -9,12 +9,5 @@ GT_EventManager:AddEventListener("ADDON_READY", function()
                 GT_EventManager:PublishEvent("REROLL_UPDATED_FROM_GUILD")
             end
         end,
-        {"SELFFOUND_MODIFIED"},
-        GT_OptionsService:GetOption("debug"))
-end)
-
-GT_EventManager:AddEventListener("OPTION_UPDATED", function(newOption)
-    if newOption.key == "debug" and selfFoundSynchronizer ~= nil then
-        selfFoundSynchronizer.debug = newOption.value
-    end
+        {"SELFFOUND_MODIFIED"})
 end)

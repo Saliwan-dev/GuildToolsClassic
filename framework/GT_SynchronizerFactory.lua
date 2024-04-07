@@ -1,12 +1,11 @@
 GT_SynchronizerFactory = {}
 
-function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, saveDataFunction, eventToSendMessage, debug)
+function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, saveDataFunction, eventToSendMessage)
     local synchronizer = {}
     synchronizer.prefix = prefix
     synchronizer.getDataFunction = getDataFunction
     synchronizer.saveDataFunction = saveDataFunction
     synchronizer.eventToSendMessage = eventToSendMessage
-    synchronizer.debug = debug
 
     -- HASH
     function synchronizer:GetHash()
@@ -60,9 +59,7 @@ function GT_SynchronizerFactory:CreateSynchronizer(prefix, getDataFunction, save
                 return
             end
 
-            if synchronizer.debug == true then
-                print("[GT]".."["..prefix.."]"..message)
-            end
+            GT_Logger:Debug("[GT]".."["..prefix.."]"..message)
 
             local splitedMessage = StringSplit(message, ":")
             local messageType = unpack(splitedMessage)

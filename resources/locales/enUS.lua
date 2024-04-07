@@ -4,6 +4,7 @@ GT_LocaleManager.locales["enUS"] = {
     ["open"]="Open",
     ["options"]="settings",
     ["optionspanel.localelabel"]="Language",
+    ["optionspanel.debugCheckbox"]="Debug",
 
     ["mainframe.tabs.members"]="Members",
     ["mainframe.tabs.bank"]="Bank",

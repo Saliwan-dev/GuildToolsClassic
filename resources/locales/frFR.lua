@@ -4,6 +4,7 @@ GT_LocaleManager.locales["frFR"] = {
     ["open"]="Ouvrir",
     ["options"]="les options",
     ["optionspanel.localelabel"]="Langue",
+    ["optionspanel.debugCheckbox"]="Debug",
 
     ["mainframe.tabs.members"]="Membres",
     ["mainframe.tabs.bank"]="Banque",

@@ -99,8 +99,15 @@ GT_MemberListFrame:SetScript("OnShow", function()
     Update()
 end)
 
+local isUpdateFromEventInProgess = false
 GT_EventManager:AddEventListener("REROLL_UPDATED_FROM_GUILD", function()
-    Update()
+    if GT_MemberListFrame:IsShown() and not isUpdateFromEventInProgess then
+        isUpdateFromEventInProgess = true
+        C_Timer.After(2, function ()
+            Update()
+            isUpdateFromEventInProgess = false
+        end)
+    end
 end)
 
 GT_EventManager:AddEventListener("SELFFOUND_MODIFIED", function()

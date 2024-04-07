@@ -168,6 +168,13 @@ function GT_MemberDetailFrame:Update()
 	end
 end
 
+local isUpdateFromEventInProgess = false
 GT_EventManager:AddEventListener("REROLL_UPDATED_FROM_GUILD", function()
-    GT_MemberDetailFrame:Update()
+    if GT_MemberDetailFrame:IsShown() and not isUpdateFromEventInProgess then
+        isUpdateFromEventInProgess = true
+        C_Timer.After(2, function ()
+            GT_MemberDetailFrame:Update()
+            isUpdateFromEventInProgess = false
+        end)
+    end
 end)
