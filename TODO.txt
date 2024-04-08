@@ -1,11 +1,10 @@
 ========== PROCHAINE VERSION
+== Fonctionnalités
 == Technique
-    - Optimisation des données à synchroniser
-        Limitation du flux de données si beaucoup de données à synchroniser
 
 ========== BACKLOG
 
-== Fonctionalités
+== Fonctionnalités
     - Indicateur de version d'addon (mécanisme de détection)
     - Messages d'achievement /!\ Gestion de la locale /!\
         Niveaux
@@ -29,4 +28,6 @@
     - Gestion des droits interne à l'addon
 
 == Technique
+    - Optimisation des données à synchroniser pour contenu de banque + tag SF
+        - Ne se baser que sur les données synchronisées pour les calculs dans les services => Déporter la responsabilité dans le service
     - Gestion du cas A reroll de B et B reroll de C
