@@ -1,5 +1,9 @@
 local chatFilters = {}
 
+local isAddonLoaded = false
+
+GT_EventManager:AddEventListener("ADDON_READY", function() isAddonLoaded = true end)
+
 function ChatFrame_AddMessageEventFilter (event, filter)
 	assert(event and filter);
 
@@ -347,15 +351,17 @@ function ChatFrame_MessageEventHandler(self, event, ...)
 				end
 --==============================================================================================================================================================
 -- ---------------------------> ICI <------------------------------------
-                local rerollName = playerLinkDisplayText
-                if string.sub(rerollName, 1, 1) == "[" then
-                    rerollName = string.sub(rerollName, 2, -2)
-                end
+                if isAddonLoaded then
+                    local rerollName = playerLinkDisplayText
+                    if string.sub(rerollName, 1, 1) == "[" then
+                        rerollName = string.sub(rerollName, 2, -2)
+                    end
 
-                local mainName = GT_RerollService:GetMain(rerollName)
-                if rerollName ~= mainName then
-				    playerLinkDisplayText = playerLinkDisplayText.."("..mainName..")"
-				end
+                    local mainName = GT_RerollService:GetMain(rerollName)
+                    if rerollName ~= mainName then
+                        playerLinkDisplayText = playerLinkDisplayText.."("..mainName..")"
+                    end
+                end
 --===============================================================================================================================================================
 
 				local isCommunityType = type == "COMMUNITIES_CHANNEL";

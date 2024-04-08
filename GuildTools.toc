@@ -14,6 +14,7 @@ libs/LibDBIcon/LibDBIcon-1.0.lua
 libs/LibStub/LibStub.lua
 
 ## Framework
+framework/GT_Logger.lua
 framework/GT_EventManager.lua
 framework/GT_UIFactory.lua
 framework/GT_Utils.lua

@@ -1,3 +1,14 @@
+### = 0.1.2
+**Features**
+- New debug option to show debug messages
+
+**Technical**
+- Minimap button config split by character
+- New Logger framework
+- Fix texture loading in banktab
+- Fix freeze on reroll data sync
+- Datasync optimization for rerolls and bankchars
+
 ### = 0.1.1
 - Remove debug logs
 

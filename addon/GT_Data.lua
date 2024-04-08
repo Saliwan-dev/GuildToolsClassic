@@ -1,5 +1,6 @@
 GT_Data = {}
 GT_Data.guildMembers = {}
+GT_Data.isAddonReady = false
 
 local realmName = GetRealmName()
 local guildName
@@ -7,8 +8,6 @@ local guildName
 local function InitData()
     if GT_SavedData == nil then GT_SavedData = {} end
     if GT_SavedData.options == nil then GT_SavedData.options = {} end
-    if GT_SavedData.options.minimapButton == nil then GT_SavedData.options.minimapButton = {} end
-    if GT_SavedData.options.minimapButton.minimapPos == nil then GT_SavedData.options.minimapButton.minimapPos = 200 end
     if GT_SavedData[realmName] == nil then GT_SavedData[realmName] = {} end
     if GT_SavedData[realmName][guildName] == nil then GT_SavedData[realmName][guildName] = {} end
 
@@ -49,26 +48,39 @@ local function InitData()
 
     -- PER CHARACTER DATA
 
-    if GT_CharacterSavedData == nil then
-        GT_CharacterSavedData = {}
-    end
-
-    if GT_CharacterSavedData.bankContent == nil then
-        GT_CharacterSavedData.bankContent = {}
+    if GT_CharacterSavedData == nil then GT_CharacterSavedData = {} end
+    if GT_CharacterSavedData.bankContent == nil then GT_CharacterSavedData.bankContent = {} end
+    if GT_CharacterSavedData.options == nil then GT_CharacterSavedData.options = {} end
+    if GT_CharacterSavedData.options.minimapButton == nil then GT_CharacterSavedData.options.minimapButton = {} end
+    if GT_CharacterSavedData.options.minimapButton.minimapPos == nil then
+        if GT_SavedData.options.minimapButton.minimapPos ~= nil then --Recuperation des datas de la 0.1.1
+            GT_CharacterSavedData.options.minimapButton.minimapPos = GT_SavedData.options.minimapButton.minimapPos
+        else
+            GT_CharacterSavedData.options.minimapButton.minimapPos = 200
+        end
     end
 
     GuildRoster()
 
+    GT_Data.isAddonReady = true
     GT_EventManager:PublishEvent("ADDON_READY")
 end
 
 local function InitDataAfterGettingGuildName()
     local maxTimeToWait = 10
+    local currentTime = 0
 
     C_Timer.NewTicker(1, function(self)
         guildName = GetGuildInfo("player")
         if guildName ~= nil then
             self:Cancel()
+            InitData()
+        end
+        currentTime = currentTime + 1
+
+        if currentTime == maxTimeToWait then
+            self:Cancel()
+            guildName = "nil"
             InitData()
         end
     end, maxTimeToWait)

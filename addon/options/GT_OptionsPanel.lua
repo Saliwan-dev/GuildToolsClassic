@@ -7,6 +7,8 @@ local title = GT_OptionsPanel:CreateFontString("ARTWORK", nil, "GameFontNormalLa
 title:SetPoint("TOP")
 title:SetText("GuildTools")
 
+-- Locale
+
 local localeDropDown = CreateFrame("FRAME", "OptionLocaleDropDown", GT_OptionsPanel, "UIDropDownMenuTemplate")
 localeDropDown:SetPoint("TOPLEFT", 60, -43)
 UIDropDownMenu_SetWidth(localeDropDown, 100)
@@ -22,6 +24,16 @@ function localeDropDown:OnNewValue(newValue)
     GT_LocaleManager:SetFavoriteLocale(newValue)
     CloseDropDownMenus()
 end
+
+-- Debug
+
+local debugCheckbox = GT_UIFactory:CreateCheckbutton(GT_OptionsPanel, 10, -80, "")
+GT_LocaleManager:BindText(getglobal(debugCheckbox:GetName() .. 'Text'), "optionspanel.debugCheckbox")
+debugCheckbox:SetScript("OnClick",
+    function()
+        GT_OptionsService:SaveOption("debug", debugCheckbox:GetChecked())
+    end
+);
 
 GT_EventManager:AddEventListener("ADDON_READY", function()
     local favoriteLocale = GT_OptionsService:GetOption("locale")
@@ -41,4 +53,14 @@ GT_EventManager:AddEventListener("ADDON_READY", function()
         info.menuList, info.hasArrow = 2, false
         UIDropDownMenu_AddButton(info)
     end)
+
+    debugCheckbox:SetChecked(GT_OptionsService:GetOption("debug"))
+    GT_Logger:SetDebug(GT_OptionsService:GetOption("debug"))
+end)
+
+-- J'ai pas trouvé de meilleur endroit pour l'instant
+GT_EventManager:AddEventListener("OPTION_UPDATED", function(newOption)
+    if newOption.key == "debug" then
+        GT_Logger:SetDebug(newOption.value)
+    end
 end)

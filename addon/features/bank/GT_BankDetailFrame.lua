@@ -82,6 +82,8 @@ local function AddItem(itemLink, quantity)
         GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress.PNG")
     end
 
+    GT_Logger:Debug("Ajout de l'item "..itemId.." avec la texture "..tostring(itemTexture))
+
     GT_BankDetailFrame.itemFrames[frameIndex].tex:SetTexture(itemTexture)
 
     GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel:SetText(tostring(quantity))
@@ -124,5 +126,24 @@ function GT_BankDetailFrame:Update()
 end
 
 GT_BankDetailFrame:SetScript("OnShow", function()
+    GT_BankDetailFrame:Update()
+end)
+
+local waitItemsCache = false
+
+local eventHandler = CreateFrame("Frame")
+eventHandler:RegisterEvent("GET_ITEM_INFO_RECEIVED")
+eventHandler:SetScript("OnEvent", function(self, event, arg1)
+    if event == "GET_ITEM_INFO_RECEIVED" and GT_BankDetailFrame:IsShown() and not waitItemsCache then
+        waitItemsCache = true
+        C_Timer.After(0.1, function()
+            waitItemsCache = false
+            GT_Logger:Debug("Update de la frame à la réception d'un event d'item")
+            GT_BankDetailFrame:Update()
+        end)
+    end
+end)
+
+GT_EventManager:AddEventListener("BANKCONTENT_UPDATED_FROM_GUILD", function(historyEntry)
     GT_BankDetailFrame:Update()
 end)
