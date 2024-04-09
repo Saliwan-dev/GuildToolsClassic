@@ -1,11 +1,16 @@
 ========== PROCHAINE VERSION
 == Fonctionnalités
+- Messages d'achievement /!\ Gestion de la locale /!\
+    Niveaux
+    Donjons en guilde
+
 == Technique
 
 ========== BACKLOG
 
 == Fonctionnalités
     - Indicateur de version d'addon (mécanisme de détection)
+        - Message de mise à jour nécessaire
     - Messages d'achievement /!\ Gestion de la locale /!\
         Niveaux
         Donjons en guilde

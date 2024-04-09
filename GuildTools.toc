@@ -24,6 +24,10 @@ framework/GT_LocaleManager.lua
 ## Resources
 resources/locales/enUS.lua
 resources/locales/frFR.lua
+resources/locales/achievement/achievement_enUS.lua
+resources/locales/achievement/achievement_frFR.lua
+resources/locales/dungeon_enUS.lua
+resources/locales/dungeon_frFR.lua
 
 ## Dao
 addon/GT_Data.lua
@@ -39,6 +43,8 @@ addon/features/bank/GT_BankSynchronizer.lua
 addon/features/bank/GT_BankInventoryScanner.lua
 addon/features/bank/GT_BankTradeListener.lua
 addon/features/bank/GT_BankMailListener.lua
+addon/features/achievement/GT_AchievementService.lua
+addon/features/achievement/GT_AchievementListener.lua
 
 ## View
 addon/GT_SelectGuildMemberPopup.lua
