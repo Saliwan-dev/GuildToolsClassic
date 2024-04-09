@@ -1,5 +1,6 @@
-### = develop
+### = 0.2.0
 **Features**
+- First part of achievements feature (send a guild message every ten levels and when a dungeon is completed)
 
 **Technical**
 - Datasync optimization for selffound tags
