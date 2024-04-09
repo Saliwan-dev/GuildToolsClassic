@@ -18,6 +18,35 @@ function GT_RerollService:RemoveReroll(rerollName)
     GT_EventManager:PublishEvent("REMOVE_REROLL", historyEntry)
 end
 
+function GT_RerollService:GetUsefullData()
+     local lastUsefullEventByReroll = {}
+     local currentMainByReroll = {}
+
+     table.sort(GT_Data.rerollHistory, function(entry1, entry2)
+         local entry1Time = string.sub(entry1, 1, 10)
+         local entry2Time = string.sub(entry2, 1, 10)
+         return entry1Time < entry2Time
+     end)
+
+     for index, entry in ipairs(GT_Data.rerollHistory) do
+         local time, action, fromPlayer, mainName, rerollName = unpack(StringSplit(entry, ":"))
+
+         if action == "ADD_REROLL" then
+             currentMainByReroll[rerollName] = mainName
+             lastUsefullEventByReroll[rerollName] = entry
+         elseif action == "REMOVE_REROLL" and (currentMainByReroll[rerollName] == mainName or currentMainByReroll[rerollName] == nil) then
+             lastUsefullEventByReroll[rerollName] = entry
+         end
+     end
+
+     local dataToSynchronize = {}
+     for rerollName, entry in pairs(lastUsefullEventByReroll) do
+         table.insert(dataToSynchronize, entry)
+     end
+
+     return dataToSynchronize
+ end
+
 function GT_RerollService:GetRerollIndex(mainTable, rerollNameToFind)
     for index, rerollName in ipairs(mainTable) do
         if rerollName == rerollNameToFind then return index end
@@ -27,15 +56,9 @@ function GT_RerollService:GetRerollIndex(mainTable, rerollNameToFind)
 end
 
 function GT_RerollService:GetMain(rerollName)
-    table.sort(GT_Data.rerollHistory, function(entry1, entry2)
-        local entry1Time = string.sub(entry1, 1, 10)
-        local entry2Time = string.sub(entry2, 1, 10)
-    	return entry1Time < entry2Time
-    end)
-
     local mainName = rerollName
 
-    for index, entry in ipairs(GT_Data.rerollHistory) do
+    for index, entry in ipairs(GT_RerollService:GetUsefullData()) do
         local time, action, fromPlayer, entryMainName, entryRerollName = unpack(StringSplit(entry, ":"))
         if entryRerollName == rerollName then
             if action == "ADD_REROLL" then
@@ -50,15 +73,9 @@ function GT_RerollService:GetMain(rerollName)
 end
 
 function GT_RerollService:GetRerolls(selectedMain)
-    table.sort(GT_Data.rerollHistory, function(entry1, entry2)
-        local entry1Time = string.sub(entry1, 1, 10)
-        local entry2Time = string.sub(entry2, 1, 10)
-    	return entry1Time < entry2Time
-    end)
-
     local historyCompilation = {}
 
-    for index, entry in ipairs(GT_Data.rerollHistory) do
+    for index, entry in ipairs(GT_RerollService:GetUsefullData()) do
         local time, action, fromPlayer, mainName, rerollName = unpack(StringSplit(entry, ":"))
         if mainName == selectedMain then
             if action == "ADD_REROLL" then

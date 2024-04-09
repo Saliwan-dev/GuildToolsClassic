@@ -1,4 +1,6 @@
-GT_LocaleManager.locales["frFR"] = {
+GT_LocaleManager:AddLabels("default", "frFR", {
+    ["and"]="et",
+
     ["leftclick"]="Clic gauche",
     ["rightclick"]="Clic droit",
     ["open"]="Ouvrir",
@@ -16,4 +18,4 @@ GT_LocaleManager.locales["frFR"] = {
 
     ["adminpanel.bankcharlabel"]="Banques de guilde",
     ["addBankCharPopup.title"]="Ajout d'une banque de guilde",
-}
+})
