@@ -28,6 +28,6 @@
     - Gestion des droits interne à l'addon
 
 == Technique
-    - Optimisation des données à synchroniser pour contenu de banque + tag SF
-        - Ne se baser que sur les données synchronisées pour les calculs dans les services => Déporter la responsabilité dans le service
     - Gestion du cas A reroll de B et B reroll de C
+
+    - Détection de désynchro banque de guilde

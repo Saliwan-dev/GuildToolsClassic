@@ -8,16 +8,33 @@ function GT_HardcoreService:SetSelffound(name, isSelffound)
     GT_EventManager:PublishEvent("SELFFOUND_MODIFIED", historyEntry)
 end
 
-function GT_HardcoreService:IsSelffound(name)
-    local isSelffound = false
+function GT_HardcoreService:GetUsefullSelffoundData()
+    local lastUsefullEventByChar = {}
 
     table.sort(GT_Data.selffoundHistory, function(entry1, entry2)
         local entry1Time = string.sub(entry1, 1, 10)
         local entry2Time = string.sub(entry2, 1, 10)
-    	return entry1Time < entry2Time
+        return entry1Time < entry2Time
     end)
 
     for index, entry in ipairs(GT_Data.selffoundHistory) do
+        local time, action, fromPlayer, entryName, entryIsSelffound = unpack(StringSplit(entry, ":"))
+
+        lastUsefullEventByChar[entryName] = entry
+    end
+
+    local dataToSynchronize = {}
+    for name, entry in pairs(lastUsefullEventByChar) do
+        table.insert(dataToSynchronize, entry)
+    end
+
+    return dataToSynchronize
+end
+
+function GT_HardcoreService:IsSelffound(name)
+    local isSelffound = false
+
+    for index, entry in ipairs(GT_HardcoreService:GetUsefullSelffoundData()) do
         local time, action, fromPlayer, entryName, entryIsSelffound = unpack(StringSplit(entry, ":"))
         if entryName == name then
             isSelffound = entryIsSelffound == "true"

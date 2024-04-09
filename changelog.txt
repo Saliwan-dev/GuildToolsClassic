@@ -1,3 +1,9 @@
+### = develop
+**Features**
+
+**Technical**
+- Datasync optimization for selffound tags
+
 ### = 0.1.2
 **Features**
 - New debug option to show debug messages
@@ -16,6 +22,7 @@
 **Features**
 - New Guild Bank Feature
 - New Admin Tab for bank char management
+
 
 **Technical**
 - Fix locale bug
