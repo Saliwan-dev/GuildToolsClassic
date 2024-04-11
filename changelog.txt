@@ -1,3 +1,7 @@
+### = 0.2.1
+**Technical**
+- Fix bug in data initialisation if 0.2.0 is downloaded first
+
 ### = 0.2.0
 **Features**
 - First part of achievements feature (send a guild message every ten levels and when a dungeon is completed)
