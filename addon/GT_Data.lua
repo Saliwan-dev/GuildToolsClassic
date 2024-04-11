@@ -53,7 +53,7 @@ local function InitData()
     if GT_CharacterSavedData.options == nil then GT_CharacterSavedData.options = {} end
     if GT_CharacterSavedData.options.minimapButton == nil then GT_CharacterSavedData.options.minimapButton = {} end
     if GT_CharacterSavedData.options.minimapButton.minimapPos == nil then
-        if GT_SavedData.options.minimapButton.minimapPos ~= nil then --Recuperation des datas de la 0.1.1
+        if GT_SavedData.options.minimapButton ~= nil and GT_SavedData.options.minimapButton.minimapPos ~= nil then --Recuperation des datas de la 0.1.1
             GT_CharacterSavedData.options.minimapButton.minimapPos = GT_SavedData.options.minimapButton.minimapPos
         else
             GT_CharacterSavedData.options.minimapButton.minimapPos = 200
