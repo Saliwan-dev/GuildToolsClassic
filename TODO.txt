@@ -8,17 +8,20 @@
 == Fonctionnalités
     - Indicateur de version d'addon (mécanisme de détection)
         - Message de mise à jour nécessaire
+
+    - Message d'afk
+
     - Messages d'achievement /!\ Gestion de la locale /!\
         Loot d'un item rare
         Personnalisation des messages
 
-    - Indicateur de mort pour le mode HC
     - Deathlog
 
     - Paramètres :
         Cacher icone minimap
         Raccourci pour ouvrir le menu
         Cacher icone panel guilde
+        Affichage des messages de mort
 
     - Rerolls :
         Barre de recherche de la liste des membre de guilde

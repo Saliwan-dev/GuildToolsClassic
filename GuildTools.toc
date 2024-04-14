@@ -22,12 +22,15 @@ framework/GT_SynchronizerFactory.lua
 framework/GT_LocaleManager.lua
 
 ## Resources
+resources/hardcore_realms.lua
 resources/locales/enUS.lua
 resources/locales/frFR.lua
 resources/locales/achievement/achievement_enUS.lua
 resources/locales/achievement/achievement_frFR.lua
 resources/locales/dungeon_enUS.lua
 resources/locales/dungeon_frFR.lua
+resources/locales/hardcore_enUS.lua
+resources/locales/hardcore_frFR.lua
 
 ## Dao
 addon/GT_Data.lua
@@ -36,6 +39,7 @@ addon/GT_Data.lua
 addon/options/GT_OptionsService.lua
 addon/features/hardcore/GT_HardcoreService.lua
 addon/features/hardcore/GT_HardcoreSynchronizer.lua
+addon/features/hardcore/GT_HardcoreListener.lua
 addon/features/reroll/GT_RerollService.lua
 addon/features/reroll/GT_RerollSynchronizer.lua
 addon/features/bank/GT_BankService.lua

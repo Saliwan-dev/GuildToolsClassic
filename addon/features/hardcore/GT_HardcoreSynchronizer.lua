@@ -1,6 +1,10 @@
 local selfFoundSynchronizer
 
 GT_EventManager:AddEventListener("ADDON_READY", function()
+    if not IsInTable(GT_HardcoreRealms, GetRealmName()) then
+        return
+    end
+
     selfFoundSynchronizer = GT_SynchronizerFactory:CreateSynchronizer("GT_HC_SF",
         GT_HardcoreService.GetUsefullSelffoundData,
         function(historyEntry)
