@@ -11,7 +11,7 @@ local backdropInfo =
 
 local GT_MainFrame = CreateFrame("Frame", "GT_MainFrame", UIParent, "BackdropTemplate")
 GT_MainFrame:SetPoint("CENTER", 0, 80)
-GT_MainFrame:SetSize(550, 400)
+GT_MainFrame:SetSize(550, 430)
 GT_MainFrame:SetBackdrop(backdropInfo)
 GT_MainFrame:EnableMouse(true)
 GT_MainFrame:Hide()
@@ -46,6 +46,8 @@ closeButton:SetScript('OnClick', function()
 	GT_MainFrame:Hide()
 end)
 
+-- Members Tab
+
 GT_GuildMembersTabContent = CreateFrame("Frame", "GT_GuildMembersTabContent", GT_MainFrame)
 GT_GuildMembersTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
 GT_GuildMembersTabContent:SetPoint("TOPLEFT", 5, -27)
@@ -54,6 +56,8 @@ GT_GuildMembersTabContent:Hide()
 local membersTab = GT_UIFactory:AddTab(GT_MainFrame, "", GT_GuildMembersTabContent)
 GT_LocaleManager:BindText(membersTab, "mainframe.tabs.members")
 
+-- Bank Tab
+
 GT_BankTabContent = CreateFrame("Frame", "GT_BankTabContent", GT_MainFrame)
 GT_BankTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
 GT_BankTabContent:SetPoint("TOPLEFT", 5, -27)
@@ -61,6 +65,18 @@ GT_BankTabContent:Hide()
 
 local bankTab = GT_UIFactory:AddTab(GT_MainFrame, "", GT_BankTabContent)
 GT_LocaleManager:BindText(bankTab, "mainframe.tabs.bank")
+
+-- Calendar Tab
+
+GT_CalendarTabContent = CreateFrame("Frame", "GT_CalendarTabContent", GT_MainFrame)
+GT_CalendarTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())
+GT_CalendarTabContent:SetPoint("TOPLEFT", 5, -27)
+GT_CalendarTabContent:Hide()
+
+local calendarTab = GT_UIFactory:AddTab(GT_MainFrame, "", GT_CalendarTabContent)
+GT_LocaleManager:BindText(calendarTab, "mainframe.tabs.calendar")
+
+-- Admin Tab
 
 GT_AdminTabContent = CreateFrame("Frame", "GT_AdminTabContent", GT_MainFrame)
 GT_AdminTabContent:SetSize(GT_MainFrame:GetWidth(), GT_MainFrame:GetHeight())

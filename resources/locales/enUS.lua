@@ -10,6 +10,7 @@ GT_LocaleManager:AddLabels("default", "enUS", {
 
     ["mainframe.tabs.members"]="Members",
     ["mainframe.tabs.bank"]="Bank",
+    ["mainframe.tabs.calendar"]="Calendar",
     ["mainframe.tabs.admin"]="Admin",
 
     ["memberdetailframe.rerollframe.sfcheckbox"]="Self-Found",
@@ -22,4 +23,12 @@ GT_LocaleManager:AddLabels("default", "enUS", {
     ["adminframe.tabs.bank"]="Banks",
     ["adminframe.tabs.announcement"]="Announcements",
     ["adminframe.announcement.level"]="Levels",
+
+    ["monday"]="Monday",
+    ["tuesday"]="Tuesday",
+    ["wednesday"]="Wednesday",
+    ["thursday"]="Thursday",
+    ["friday"]="Friday",
+    ["saturday"]="Saturday",
+    ["sunday"]="Sunday",
 })

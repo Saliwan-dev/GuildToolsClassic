@@ -20,6 +20,7 @@ framework/GT_UIFactory.lua
 framework/GT_Utils.lua
 framework/GT_SynchronizerFactory.lua
 framework/GT_LocaleManager.lua
+framework/GT_DateUtils.lua
 
 ## Resources
 resources/hardcore_realms.lua
@@ -50,6 +51,7 @@ addon/features/bank/GT_BankMailListener.lua
 addon/features/achievement/GT_AchievementService.lua
 addon/features/achievement/GT_AchievementListener.lua
 addon/features/achievement/GT_AchievementSynchronizer.lua
+addon/features/calendar/GT_CalendarSynchronizer.lua
 
 ## View
 addon/GT_SelectGuildMemberPopup.lua
@@ -62,6 +64,7 @@ addon/GT_MemberListFrame.lua
 addon/GT_MemberDetailFrame.lua
 addon/features/bank/GT_BankListFrame.lua
 addon/features/bank/GT_BankDetailFrame.lua
+addon/features/calendar/GT_CalendarFrame.lua
 addon/GT_MinimapButton.lua
 
 addon/ext/GT_ChatFrameOverride.lua

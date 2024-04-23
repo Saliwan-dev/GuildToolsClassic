@@ -23,6 +23,13 @@ function GT_UIFactory:CreateLabel(parent,  x_loc, y_loc, text, fontSize, r, g, b
     return label
 end
 
+function GT_UIFactory:CreateLocalizedLabel(parent,  x_loc, y_loc, key, fontSize, r, g, b)
+    local label = self:CreateLabel(parent,  x_loc, y_loc, "", fontSize, r, g, b)
+    GT_LocaleManager:BindText(label, key)
+
+    return label
+end
+
 local function Tab_OnClick(self)
     PanelTemplates_SetTab(self:GetParent(), self:GetID())
 
