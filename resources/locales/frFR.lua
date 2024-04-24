@@ -18,4 +18,9 @@ GT_LocaleManager:AddLabels("default", "frFR", {
 
     ["adminpanel.bankcharlabel"]="Banques de guilde",
     ["addBankCharPopup.title"]="Ajout d'une banque de guilde",
+
+    ["adminframe.tabs.bank"]="Banques",
+    ["adminframe.tabs.announcement"]="Annonces",
+    ["adminframe.announcement.level"]="Niveaux",
+    ["adminframe.announcement.level.help"]="Nom = %player% | Niveau = %level% | ex: Bravo à %player% qui passe niveau %level% !",
 })

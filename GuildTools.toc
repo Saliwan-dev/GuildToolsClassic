@@ -49,13 +49,15 @@ addon/features/bank/GT_BankTradeListener.lua
 addon/features/bank/GT_BankMailListener.lua
 addon/features/achievement/GT_AchievementService.lua
 addon/features/achievement/GT_AchievementListener.lua
+addon/features/achievement/GT_AchievementSynchronizer.lua
 
 ## View
 addon/GT_SelectGuildMemberPopup.lua
 addon/features/reroll/GT_AddRerollPopup.lua
 addon/options/GT_OptionsPanel.lua
 addon/GT_MainFrame.lua
-addon/GT_AdminPanel.lua
+addon/features/admin/GT_AdminPanel.lua
+addon/features/admin/GT_AnnouncementAdminPanel.lua
 addon/GT_MemberListFrame.lua
 addon/GT_MemberDetailFrame.lua
 addon/features/bank/GT_BankListFrame.lua

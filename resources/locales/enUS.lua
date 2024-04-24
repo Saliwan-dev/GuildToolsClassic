@@ -18,4 +18,8 @@ GT_LocaleManager:AddLabels("default", "enUS", {
 
     ["adminpanel.bankcharlabel"]="Guild banks",
     ["addBankCharPopup.title"]="Add a guild bank",
+
+    ["adminframe.tabs.bank"]="Banks",
+    ["adminframe.tabs.announcement"]="Announcements",
+    ["adminframe.announcement.level"]="Levels",
 })

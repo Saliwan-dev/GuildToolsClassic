@@ -39,12 +39,14 @@ local function InitData()
 
     if GT_SavedData[realmName][guildName].bankCharsHistory == nil then GT_SavedData[realmName][guildName].bankCharsHistory = {} end
     if GT_SavedData[realmName][guildName].bankContentHistory == nil then GT_SavedData[realmName][guildName].bankContentHistory = {} end
+    if GT_SavedData[realmName][guildName].achievementMessageHistory == nil then GT_SavedData[realmName][guildName].achievementMessageHistory = {} end
 
     -- Alias
     GT_Data.rerollHistory = GT_SavedData[realmName][guildName].rerollHistory
     GT_Data.selffoundHistory = GT_SavedData[realmName][guildName].selffoundHistory
     GT_Data.bankCharsHistory = GT_SavedData[realmName][guildName].bankCharsHistory
     GT_Data.bankContentHistory = GT_SavedData[realmName][guildName].bankContentHistory
+    GT_Data.achievementMessageHistory = GT_SavedData[realmName][guildName].achievementMessageHistory
 
     -- PER CHARACTER DATA
 
