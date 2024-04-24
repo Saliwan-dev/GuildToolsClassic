@@ -55,11 +55,63 @@ local function ConcatPartyNames(names)
     return result
 end
 
+-- Levels
+
 function GT_AchievementService:OnLevelUp(level)
     if level % 10 == 0 or level > 50 then
-        SendGuildMessage(GT_LocaleManager:GetLabel("up", "achievement"):gsub("%%player%%", UnitName("player")):gsub("%%level%%", level))
+        SendGuildMessage(GT_AchievementService:GetLevelAchievementMessage(level):gsub("%%player%%", UnitName("player")):gsub("%%level%%", level))
     end
 end
+
+function GT_AchievementService:SaveLevelAchievementMessage(level, text)
+    local historyEntry = GetServerTime()..":UPDATE_ACHIEVEMENT:LEVEL:"..tostring(level)..":"..UnitName("player")..":"..text
+
+    table.insert(GT_Data.achievementMessageHistory, historyEntry)
+
+    GT_EventManager:PublishEvent("UPDATE_ACHIEVEMENT", historyEntry)
+end
+
+
+function GT_AchievementService:GetUsefullData()
+     local lastUsefullEventByMessage = {}
+
+     table.sort(GT_Data.achievementMessageHistory, function(entry1, entry2)
+         local entry1Time = string.sub(entry1, 1, 10)
+         local entry2Time = string.sub(entry2, 1, 10)
+         return entry1Time < entry2Time
+     end)
+
+     for index, entry in ipairs(GT_Data.achievementMessageHistory) do
+         local time, action, subAction, level, fromPlayer, message = unpack(StringSplit(entry, ":"))
+
+         if action == "UPDATE_ACHIEVEMENT" and subAction == "LEVEL" then
+             lastUsefullEventByMessage[subAction..":"..level] = entry
+         end
+     end
+
+     local dataToSynchronize = {}
+     for key, entry in pairs(lastUsefullEventByMessage) do
+         table.insert(dataToSynchronize, entry)
+     end
+
+     return dataToSynchronize
+end
+
+function GT_AchievementService:GetLevelAchievementMessage(level)
+    levelToSearch = level
+    if levelToSearch > 50 and levelToSearch < 60 then levelToSearch = 51 end
+
+    for index, entry in ipairs(GT_AchievementService:GetUsefullData()) do
+        local time, action, subAction, entryLevel, fromPlayer, message = unpack(StringSplit(entry, ":"))
+        if action == "UPDATE_ACHIEVEMENT" and subAction == "LEVEL" and tostring(levelToSearch) == entryLevel then
+             return message
+         end
+    end
+
+    return GT_LocaleManager:GetLabel("up", "achievement")
+end
+
+-- Kills
 
 function GT_AchievementService:OnKill(destGUID, destName)
     local myName = UnitName("player")
