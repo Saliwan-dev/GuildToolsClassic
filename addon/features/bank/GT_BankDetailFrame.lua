@@ -82,8 +82,6 @@ local function AddItem(itemLink, quantity)
         GT_BankDetailFrame.itemFrames[frameIndex].highlightFrame:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress.PNG")
     end
 
-    GT_Logger:Debug("Ajout de l'item "..itemId.." avec la texture "..tostring(itemTexture))
-
     GT_BankDetailFrame.itemFrames[frameIndex].tex:SetTexture(itemTexture)
 
     GT_BankDetailFrame.itemFrames[frameIndex].quantityLabel:SetText(tostring(quantity))
@@ -144,6 +142,13 @@ eventHandler:SetScript("OnEvent", function(self, event, arg1)
     end
 end)
 
+local isUpdateFromEventInProgess = false
 GT_EventManager:AddEventListener("BANKCONTENT_UPDATED_FROM_GUILD", function(historyEntry)
-    GT_BankDetailFrame:Update()
+    if GT_BankDetailFrame:IsShown() and not isUpdateFromEventInProgess then
+        isUpdateFromEventInProgess = true
+        C_Timer.After(2, function ()
+            GT_BankDetailFrame:Update()
+            isUpdateFromEventInProgess = false
+        end)
+    end
 end)

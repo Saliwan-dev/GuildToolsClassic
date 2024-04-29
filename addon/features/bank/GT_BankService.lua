@@ -70,8 +70,19 @@ end
 
 -- ===== BANK CONTENT
 
+local lastEventTime = -1;
+local lastEventId = 0;
+
 function GT_BankService:AddBankContent(bankCharName, source, quantity, itemLink)
-    local historyEntry = GetServerTime()..":ADD_BANKCONTENT:"..bankCharName..":"..source..":"..quantity..":"..itemLink
+    local currentTime = GetServerTime()
+    if currentTime == lastEventTime then
+        lastEventId = lastEventId + 1
+    else
+        lastEventTime = currentTime
+        lastEventId = 0
+    end
+
+    local historyEntry = "2:"..currentTime..":ADD_BANKCONTENT:"..bankCharName..":"..tostring(lastEventId)..":"..source..":"..quantity..":"..itemLink
 
     table.insert(GT_Data.bankContentHistory, historyEntry)
 
@@ -79,11 +90,33 @@ function GT_BankService:AddBankContent(bankCharName, source, quantity, itemLink)
 end
 
 function GT_BankService:RemoveBankContent(bankCharName, destination, quantity, itemLink)
-    local historyEntry = GetServerTime()..":REMOVE_BANKCONTENT:"..bankCharName..":"..destination..":"..quantity..":"..itemLink
+    local currentTime = GetServerTime()
+    if currentTime == lastEventTime then
+        lastEventId = lastEventId + 1
+    else
+        lastEventTime = currentTime
+        lastEventId = 0
+    end
+
+    local historyEntry = "2:"..currentTime..":REMOVE_BANKCONTENT:"..bankCharName..":"..tostring(lastEventId)..":"..destination..":"..quantity..":"..itemLink
 
     table.insert(GT_Data.bankContentHistory, historyEntry)
 
     GT_EventManager:PublishEvent("REMOVE_BANKCONTENT", historyEntry)
+end
+
+function GT_BankService:GetBankContentUsefullData()
+    local usefullData = {}
+
+    for index, entry in ipairs(GT_Data.bankContentHistory) do
+        local _, _, version = string.find(entry, "([^:]+):(.+)")
+
+        if version == "2" then
+            table.insert(usefullData, entry)
+        end
+    end
+
+    return usefullData
 end
 
 function GT_BankService:GetBankContent(bankCharName)
@@ -91,7 +124,7 @@ function GT_BankService:GetBankContent(bankCharName)
         return {}
     end
 
-    table.sort(GT_Data.bankContentHistory, function(entry1, entry2)
+    table.sort(self:GetBankContentUsefullData(), function(entry1, entry2)
         local entry1Time = string.sub(entry1, 1, 10)
         local entry2Time = string.sub(entry2, 1, 10)
         return entry1Time < entry2Time
@@ -99,8 +132,8 @@ function GT_BankService:GetBankContent(bankCharName)
 
     local bankContent = {}
 
-    for index, entry in ipairs(GT_Data.bankContentHistory) do
-        local _, _, time, action, entryBankCharName, sourceOrDest, quantity, link = string.find(entry, "([^:]+):([^:]+):([^:]+):([^:]+):([^:]+):(.+)")
+    for index, entry in ipairs(self:GetBankContentUsefullData()) do
+        local _, _, version, time, action, entryBankCharName, event_id, sourceOrDest, quantity, link = string.find(entry, "([^:]+):([^:]+):([^:]+):([^:]+):([^:]+):([^:]+):([^:]+):(.+)")
 
         if entryBankCharName == bankCharName then
             if bankContent[link] == nil then
