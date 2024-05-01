@@ -32,4 +32,17 @@ GT_LocaleManager:AddLabels("default", "frFR", {
     ["friday"]="Vendredi",
     ["saturday"]="Samedi",
     ["sunday"]="Dimanche",
+
+    ["january"]="Janvier",
+    ["february"]="Février",
+    ["march"]="Mars",
+    ["april"]="Avril",
+    ["may"]="Mai",
+    ["june"]="Juin",
+    ["july"]="Juillet",
+    ["august"]="Août",
+    ["september"]="Septembre",
+    ["october"]="Octobre",
+    ["november"]="Novembre",
+    ["december"]="Décembre",
 })
