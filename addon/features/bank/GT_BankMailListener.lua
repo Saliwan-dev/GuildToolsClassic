@@ -38,6 +38,8 @@ local function OnMailClosed()
     for itemLink, quantity in pairs(itemsToRemove) do
         GT_BankService:RemoveBankContent(myName, "nil", quantity, itemLink) --Need some work to get mail "to"
     end
+
+    beforeMailInventory = afterMailInventory --Sometimes PLAYER_INTERACTION_MANAGER_FRAME_HIDE event is triggerd 2 times
 end
 
 local eventHandler = CreateFrame("Frame")
