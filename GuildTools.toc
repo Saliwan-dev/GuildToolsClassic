@@ -51,6 +51,7 @@ addon/features/bank/GT_BankMailListener.lua
 addon/features/achievement/GT_AchievementService.lua
 addon/features/achievement/GT_AchievementListener.lua
 addon/features/achievement/GT_AchievementSynchronizer.lua
+addon/features/calendar/GT_CalendarService.lua
 addon/features/calendar/GT_CalendarSynchronizer.lua
 
 ## View
@@ -66,7 +67,8 @@ addon/features/bank/GT_BankListFrame.lua
 addon/features/bank/GT_BankDetailFrame.lua
 addon/features/calendar/GT_CalendarFrame.lua
 addon/features/calendar/GT_MinimapCalendarButton.lua
-addon/features/calendar/GT_CalendarActionFrame.lua
+addon/features/calendar/GT_CalendarDayDetailFrame.lua
+addon/features/calendar/GT_CreateEventFrame.lua
 addon/GT_MinimapButton.lua
 
 addon/ext/GT_ChatFrameOverride.lua

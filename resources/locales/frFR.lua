@@ -25,6 +25,14 @@ GT_LocaleManager:AddLabels("default", "frFR", {
     ["adminframe.announcement.level"]="Niveaux",
     ["adminframe.announcement.level.help"]="Nom = %player% | Niveau = %level% | ex: Bravo à %player% qui passe niveau %level% !",
 
+    ["calendar.new.event"]="Créer event",
+    ["calendar.new.event.frame.title"]="Nouvel event",
+    ["calendar.new.event.title"]="Titre :",
+    ["calendar.new.event.date"]="Date :",
+    ["calendar.new.event.hour"]="Heure :",
+    ["calendar.new.event.description"]="Description :",
+    ["calendar.new.event.create"]="Créer",
+
     ["monday"]="Lundi",
     ["tuesday"]="Mardi",
     ["wednesday"]="Mercredi",

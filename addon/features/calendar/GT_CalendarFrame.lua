@@ -154,6 +154,7 @@ local function SetMonth(month, year)
     for calendarPosition = 0, 41 do
         highlightFrames[calendarPosition]:SetScript("OnMouseUp", function(self)
             local selectedDay = C_DateAndTime.AdjustTimeByDays(firstDay, calendarPosition - firstWeekday)
+            GT_CalendarFrame:notifyDaySelection(selectedDay)
             GT_CalendarActionFrame:SetSelectedDay(selectedDay)
             if selectedDayHighlightFrame ~= nil then selectedDayHighlightFrame.tex:SetTexture(nil) end
             selectedDayHighlightFrame = self
@@ -202,3 +203,14 @@ previousMonthButton:SetScript('OnClick', function()
     end
 	SetMonth(selectedMonth, selectedYear)
 end)
+
+GT_CalendarFrame.daySelectionListeners = {}
+function GT_CalendarFrame:AddDaySelectionListener(listener)
+    table.insert(GT_CalendarFrame.daySelectionListeners, listener)
+end
+
+function GT_CalendarFrame:notifyDaySelection(selectedDay)
+    for index, listener in ipairs(GT_CalendarFrame.daySelectionListeners) do
+        listener(selectedDay)
+    end
+end

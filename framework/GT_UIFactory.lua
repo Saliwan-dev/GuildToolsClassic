@@ -24,10 +24,18 @@ function GT_UIFactory:CreateLabel(parent,  x_loc, y_loc, text, fontSize, r, g, b
 end
 
 function GT_UIFactory:CreateLocalizedLabel(parent,  x_loc, y_loc, key, fontSize, r, g, b)
-    local label = self:CreateLabel(parent,  x_loc, y_loc, "", fontSize, r, g, b)
+    local label = self:CreateLabel(parent,  x_loc, y_loc, "Ceci est un label par défaut pour la taille du texte", fontSize, r, g, b)
     GT_LocaleManager:BindText(label, key)
 
     return label
+end
+
+function GT_UIFactory:CreateLocalizedButton(parent, width, height, textKey)
+    local button = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
+    button:SetSize(width, height)
+    GT_LocaleManager:BindText(button, textKey)
+
+    return button
 end
 
 local function Tab_OnClick(self)

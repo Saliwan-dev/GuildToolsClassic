@@ -24,6 +24,14 @@ GT_LocaleManager:AddLabels("default", "enUS", {
     ["adminframe.tabs.announcement"]="Announcements",
     ["adminframe.announcement.level"]="Levels",
 
+    ["calendar.new.event"]="New event",
+    ["calendar.new.event.frame.title"]="New event",
+    ["calendar.new.event.title"]="Title :",
+    ["calendar.new.event.date"]="Date :",
+    ["calendar.new.event.hour"]="Hour :",
+    ["calendar.new.event.description"]="Description :",
+    ["calendar.new.event.create"]="Create",
+
     ["monday"]="Monday",
     ["tuesday"]="Tuesday",
     ["wednesday"]="Wednesday",
