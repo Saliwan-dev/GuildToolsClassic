@@ -1,9 +1,5 @@
 local monthLabelKeys = {"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"}
 
-for key, value in pairs(C_DateAndTime) do
-    print(key)
-end
-
 local selectedMonth = C_DateAndTime.GetCurrentCalendarTime().month;
 local selectedYear = C_DateAndTime.GetCurrentCalendarTime().year;
 local selectedDayHighlightFrame = nil

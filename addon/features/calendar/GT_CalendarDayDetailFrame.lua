@@ -15,12 +15,12 @@ local backdrop =
 
 local eventBackdrop =
 {
-    bgFile="Interface\\FrameGeneral\\UI-Background-Marble",
+    bgFile="Interface\\FrameGeneral\\UI-Background-Rock",
     edgeFile="Interface\\DialogFrame\\UI-DialogBox-Border",
  	tile = true,
  	tileEdge = true,
  	tileSize = 256,
- 	edgeSize = 4,
+ 	edgeSize = 16,
  	insets = { left = 1, right = 1, top = 1, bottom = 1 },
 }
 
@@ -42,9 +42,18 @@ createEventButton:Hide()
 
 local function ShowEvent(event, index)
     local eventFrame = CreateFrame("Frame", nil, GT_CalendarActionFrame, "BackdropTemplate")
-    eventFrame:SetSize(125, 50)
+    eventFrame:SetSize(127, 60)
     eventFrame:SetBackdrop(eventBackdrop)
-    eventFrame:SetPoint("TOPLEFT", 5, index * -60)
+    eventFrame:SetPoint("TOPLEFT", 3, -70 + (index - 1) * -65)
+
+    eventFrame.title = GT_UIFactory:CreateLabel(eventFrame, 0, 0, event.title, 12, 1, 0.8, 0)
+    eventFrame.title:ClearAllPoints()
+    eventFrame.title:SetPoint("TOP", 0, -8)
+    eventFrame.title:SetSize(115, 40)
+
+    eventFrame:SetScript("OnMouseDown", function()
+        GT_EventManager:PublishEvent("CALENDAR_EVENT_SELECTED", event)
+    end)
 end
 
 function GT_CalendarActionFrame:SetSelectedDay(newSelectedDay)
