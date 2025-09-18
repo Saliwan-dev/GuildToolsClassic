@@ -59,10 +59,10 @@ local highlightFrames = {}
 for calendarPosition = 0, 41 do
     local highlightFrame = CreateFrame("Frame", nil, GT_CalendarFrame)
     highlightFrame:SetPoint("TOPLEFT", (calendarPosition % 7) * 58, -math.floor(calendarPosition / 7) * 58)
-    highlightFrame:SetSize(58, 58)
+    highlightFrame:SetSize(56, 56)
     highlightFrame.tex = highlightFrame:CreateTexture()
     highlightFrame.tex:SetPoint("CENTER", 0, 0)
-    highlightFrame.tex:SetSize(58, 58)
+    highlightFrame.tex:SetSize(56, 56)
     highlightFrame.tex:SetTexCoord(0, 0.34, 0, 0.68)
 
     highlightFrame:SetScript("OnEnter", function() highlightFrame.tex:SetTexture("Interface\\Calendar\\Highlights.PNG") end)
@@ -73,6 +73,22 @@ for calendarPosition = 0, 41 do
     end)
 
     highlightFrames[calendarPosition] = highlightFrame
+end
+
+local numberEventFrames = {}
+for calendarPosition = 0, 41 do
+    local numberEventFrame = CreateFrame("Frame", nil, GT_CalendarFrame)
+    numberEventFrame:SetPoint("TOPLEFT", (calendarPosition % 7) * 58 + 25, -math.floor(calendarPosition / 7) * 58 - 25)
+    numberEventFrame:SetSize(30, 30)
+    numberEventFrame.tex = numberEventFrame:CreateTexture()
+    numberEventFrame.tex:SetPoint("CENTER", 0, 0)
+    numberEventFrame.tex:SetSize(30, 30)
+    numberEventFrame.tex:SetTexCoord(0.25, 0.50, 0.6, 0.85)
+    numberEventFrame.tex:SetTexture("Interface\\AddOns\\GuildTools\\resources\\textures\\BrewfestPlates.PNG")
+
+    numberEventFrame.text = GT_UIFactory:CreateLabel(numberEventFrame, 12, -10, "8", 10, 1, 0.8, 0)
+
+    numberEventFrames[calendarPosition] = numberEventFrame
 end
 
 local dayNumberLabels = {}
@@ -155,6 +171,21 @@ local function SetMonth(month, year)
             if selectedDayHighlightFrame ~= nil then selectedDayHighlightFrame.tex:SetTexture(nil) end
             selectedDayHighlightFrame = self
         end)
+    end
+
+    for calendarPosition = 0, 41 do
+
+
+        local day = C_DateAndTime.AdjustTimeByDays(firstDay, calendarPosition - firstWeekday)
+
+        local events = GT_CalendarService:GetEventsForDay(day)
+
+        if TableLength(events) > 0 then
+            numberEventFrames[calendarPosition]:Show()
+            numberEventFrames[calendarPosition].text:SetText(TableLength(events))
+        else
+            numberEventFrames[calendarPosition]:Hide()
+        end
     end
 
     local now = C_DateAndTime.GetCurrentCalendarTime()

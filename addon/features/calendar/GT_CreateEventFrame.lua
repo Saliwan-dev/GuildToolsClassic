@@ -31,19 +31,19 @@ GT_CreateEventFrame.frameTitle = GT_UIFactory:CreateLocalizedLabel(GT_CreateEven
 GT_CreateEventFrame.frameTitle:ClearAllPoints()
 GT_CreateEventFrame.frameTitle:SetPoint("TOP", 0, -8)
 
-GT_CreateEventFrame.titleLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -40, "calendar.new.event.title", 12, 1, 1, 1)
+GT_CreateEventFrame.titleLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -40, "calendar.event.label.title", 12, 1, 1, 1)
 
 GT_CreateEventFrame.titleField = CreateFrame("EditBox", nil, GT_CreateEventFrame, "InputBoxTemplate")
 GT_CreateEventFrame.titleField:SetSize(190, 12)
 GT_CreateEventFrame.titleField:SetPoint("LEFT", GT_CreateEventFrame.titleLabel, "RIGHT", 10, 0)
 
-GT_CreateEventFrame.dateLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -65, "calendar.new.event.date", 12, 1, 1, 1)
+GT_CreateEventFrame.dateLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -65, "calendar.event.label.date", 12, 1, 1, 1)
 
 GT_CreateEventFrame.dateValue = GT_UIFactory:CreateLabel(GT_CreateEventFrame, 0, 0, "", 12, 1, 1, 1)
 GT_CreateEventFrame.dateValue:ClearAllPoints()
 GT_CreateEventFrame.dateValue:SetPoint("LEFT", GT_CreateEventFrame.dateLabel, "RIGHT", 5, 0)
 
-GT_CreateEventFrame.hourLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -90, "calendar.new.event.hour", 12, 1, 1, 1)
+GT_CreateEventFrame.hourLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -90, "calendar.event.label.hour", 12, 1, 1, 1)
 
 GT_CreateEventFrame.hourField = CreateFrame("EditBox", nil, GT_CreateEventFrame, "InputBoxTemplate")
 GT_CreateEventFrame.hourField:SetSize(50, 12)
@@ -57,7 +57,7 @@ GT_CreateEventFrame.minuteField = CreateFrame("EditBox", nil, GT_CreateEventFram
 GT_CreateEventFrame.minuteField:SetSize(50, 12)
 GT_CreateEventFrame.minuteField:SetPoint("LEFT", GT_CreateEventFrame.hourSeparator, "RIGHT", 10, 0)
 
-GT_CreateEventFrame.descriptionLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -115, "calendar.new.event.description", 12, 1, 1, 1)
+GT_CreateEventFrame.descriptionLabel = GT_UIFactory:CreateLocalizedLabel(GT_CreateEventFrame, 5, -115, "calendar.event.label.description", 12, 1, 1, 1)
 
 GT_CreateEventFrame.descriptionField = CreateFrame("ScrollFrame", nil, GT_CreateEventFrame, "InputScrollFrameTemplate");
 GT_CreateEventFrame.descriptionField:SetSize(220, 150)

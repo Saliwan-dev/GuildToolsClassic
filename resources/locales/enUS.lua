@@ -26,10 +26,11 @@ GT_LocaleManager:AddLabels("default", "enUS", {
 
     ["calendar.new.event"]="New event",
     ["calendar.new.event.frame.title"]="New event",
-    ["calendar.new.event.title"]="Title :",
-    ["calendar.new.event.date"]="Date :",
-    ["calendar.new.event.hour"]="Hour :",
-    ["calendar.new.event.description"]="Description :",
+    ["calendar.event.label.title"]="Title :",
+    ["calendar.event.label.date"]="Date :",
+    ["calendar.event.label.hour"]="Hour :",
+    ["calendar.event.label.description"]="Description :",
+    ["calendar.event.label.creator"]="Creator :",
     ["calendar.new.event.create"]="Create",
 
     ["monday"]="Monday",
