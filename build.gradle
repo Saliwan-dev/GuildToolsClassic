@@ -11,6 +11,7 @@ tasks.register("copySources", Copy) {
     exclude ('gradle.properties')
     exclude ('gradlew')
     exclude ('gradlew.bat')
+    exclude ('TODO.txt')
 }
 
 tasks.register("srcZip", Zip) {

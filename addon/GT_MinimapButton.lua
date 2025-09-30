@@ -9,8 +9,7 @@ local GuildToolsLDB = LibStub("LibDataBroker-1.1"):NewDataObject("GuildTools", {
     end,
 	OnClick = function(clickedframe, button)
 	    if button == "RightButton" then
-	        InterfaceOptionsFrame:Show()
-            InterfaceOptionsFrame_OpenToCategory("GuildTools")
+            Settings.OpenToCategory(GT_SettingsCategory:GetID())
 	    else
 		    GT_MainFrame:SetShown(not GT_MainFrame:IsShown())
 		end

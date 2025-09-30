@@ -16,19 +16,21 @@ function StringJoin(strings, sep)
         sep = "%s"
     end
 
-    if strings == nil or table.len(strings) == 0 then
+    if strings == nil or TableLength(strings) == 0 then
         return ""
     end
 
-    if table.len(strings) == 1 then
+    if TableLength(strings) == 1 then
         return strings[1]
     end
 
     local result = strings[1]
 
-    for index = 2, table.len(strings) do
-        result = result..":"..strings[index]
+    for index = 2, TableLength(strings) do
+        result = result..sep..strings[index]
     end
+
+    return result
 end
 
 function StartWith(string, startPattern)

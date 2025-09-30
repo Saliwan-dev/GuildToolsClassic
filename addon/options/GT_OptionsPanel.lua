@@ -1,6 +1,5 @@
 local GT_OptionsPanel = CreateFrame("Frame")
 GT_OptionsPanel.name = "GuildTools"
-InterfaceOptions_AddCategory(GT_OptionsPanel)
 
 -- add widgets to the panel as desired
 local title = GT_OptionsPanel:CreateFontString("ARTWORK", nil, "GameFontNormalLarge")
@@ -57,6 +56,9 @@ GT_EventManager:AddEventListener("ADDON_READY", function()
     debugCheckbox:SetChecked(GT_OptionsService:GetOption("debug"))
     GT_Logger:SetDebug(GT_OptionsService:GetOption("debug"))
 end)
+
+GT_SettingsCategory = Settings.RegisterCanvasLayoutCategory(GT_OptionsPanel, "GuildTools")
+Settings.RegisterAddOnCategory(GT_SettingsCategory)
 
 -- J'ai pas trouvé de meilleur endroit pour l'instant
 GT_EventManager:AddEventListener("OPTION_UPDATED", function(newOption)
